@@ -21,6 +21,7 @@ namespace teacher
         {
             InitializeComponent();
             setLanguage();
+            button_language_RU.BackColor = Color.Red;
 
             BackgroundWorker Taskmgr_killer = new BackgroundWorker();
             Taskmgr_killer.DoWork += Taskmgr_killer_DoWork;
@@ -125,13 +126,26 @@ namespace teacher
         {
             button_language_EN.BackColor = Color.White;
             button_language_RU.BackColor = Color.White;
+
+            button_language_EN.ForeColor = Color.Black;
+            button_language_RU.ForeColor = Color.Black;
         }
 
         private void button_language_RU_Click(object sender, EventArgs e)
         {
             allButton_White();
             button_language_RU.BackColor = Color.Red;
+            button_language_RU.ForeColor = Color.White;
             language = "ru";
+            setLanguage();
+        }
+
+        private void button_language_EN_Click(object sender, EventArgs e)
+        {
+            allButton_White();
+            button_language_EN.BackColor = Color.Red;
+            button_language_EN.ForeColor = Color.White;
+            language = "en";
             setLanguage();
         }
     }
