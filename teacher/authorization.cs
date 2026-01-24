@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Drawing2D;
 
 namespace teacher
 {
@@ -26,6 +27,11 @@ namespace teacher
             BackgroundWorker Taskmgr_killer = new BackgroundWorker();
             Taskmgr_killer.DoWork += Taskmgr_killer_DoWork;
             Taskmgr_killer.RunWorkerAsync();
+        }
+
+        private void authorization_Load(object sender, EventArgs e)
+        {
+            
         }
 
         private void Taskmgr_killer_DoWork(object sender, DoWorkEventArgs e)
@@ -147,6 +153,23 @@ namespace teacher
             button_language_EN.ForeColor = Color.White;
             language = "en";
             setLanguage();
+        }
+
+        private void authorization_Resize(object sender, EventArgs e)
+        {
+            this.FormBorderStyle = FormBorderStyle.None;
+            int radius = 20;
+
+            GraphicsPath path = new GraphicsPath();
+            path.StartFigure();
+
+            path.AddArc(0, 0, radius, radius, 180, 90);
+            path.AddArc(ClientSize.Width - radius, 0, radius, radius, 270, 90);
+            path.AddArc(ClientSize.Width - radius, ClientSize.Height - radius, radius, radius, 0, 90);
+            path.AddArc(0, ClientSize.Height - radius, radius, radius, 90, 90);
+
+            path.CloseFigure();
+            this.Region = new Region(path);
         }
     }
 }

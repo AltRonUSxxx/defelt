@@ -147,7 +147,7 @@
             this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label2.Font = new System.Drawing.Font("Comic Sans MS", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(363, 0);
+            this.label2.Location = new System.Drawing.Point(361, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 38);
             this.label2.TabIndex = 10;
@@ -199,7 +199,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(400, 600);
+            this.ClientSize = new System.Drawing.Size(410, 610);
             this.Controls.Add(this.button_language_EN);
             this.Controls.Add(this.button_language_RU);
             this.Controls.Add(this.label2);
@@ -221,8 +221,10 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Авторизация";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.authorization_FormClosing);
+            this.Load += new System.EventHandler(this.authorization_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.authorization_KeyPress);
             this.Leave += new System.EventHandler(this.authorization_Leave);
+            this.Resize += new System.EventHandler(this.authorization_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_uppestPanel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
