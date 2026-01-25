@@ -240,6 +240,8 @@ namespace teacher
                     client.Send(messageData, SocketFlags.None);
                     byte[] buffer = new byte[1024];
                     int bytesRead = client.Receive(buffer);
+                    message = Encoding.UTF8.GetString(buffer, 0, bytesRead);
+                    MessageBox.Show(message);
                 }
                 catch
                 {
