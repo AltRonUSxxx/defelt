@@ -235,7 +235,7 @@ namespace teacher
                 try
                 {
                     client.Connect(endPoint);
-                    string message = $"{textBox_username.Text} {textBox_password.Text}";
+                    string message = $"01 {textBox_username.Text} {textBox_password.Text}";
                     byte[] messageData = Encoding.UTF8.GetBytes(message);
                     client.Send(messageData, SocketFlags.None);
                     byte[] buffer = new byte[1024];
