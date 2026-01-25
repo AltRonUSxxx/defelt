@@ -24,6 +24,8 @@ namespace teacher
         private string useOnlyLetterAndNumber;
         private string dontUseSpace;
         private string NotMoreThan;
+        private string serverIsOff;
+
         private Socket client;
         private IPEndPoint endPoint;
 
@@ -84,6 +86,7 @@ namespace teacher
                     useOnlyLetterAndNumber = "Используйте только буквы и цифры для имени пользователя";
                     dontUseSpace = "Не используйте пробелы";
                     NotMoreThan = "Длина не больше 32 символовов";
+                    serverIsOff = "Сервер выключен";
                     break;
                 case "en":
                     allarmCloseText = "You can't close this app";
@@ -92,6 +95,7 @@ namespace teacher
                     useOnlyLetterAndNumber = "Use only letter and number for username";
                     dontUseSpace = "Don't use space";
                     NotMoreThan = "Lenght no more than 32 characters";
+                    serverIsOff = "Server is off";
                     break;
             }
         }
@@ -228,9 +232,19 @@ namespace teacher
         {
             if (check_validation())
             {
-                client.Connect(endPoint);
-                string message = $"{textBox_username.Text} {textBox_password.Text}";
-                byte
+                try
+                {
+                    client.Connect(endPoint);
+                    string message = $"{textBox_username.Text} {textBox_password.Text}";
+                    byte[] messageData = Encoding.UTF8.GetBytes(message);
+                    client.Send(messageData, SocketFlags.None);
+                    byte[] buffer = new byte[1024];
+                    int bytesRead = client.Receive(buffer);
+                }
+                catch
+                {
+                    MessageBox.Show(serverIsOff);
+                }
             }
         }
 
