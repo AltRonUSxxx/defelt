@@ -29,12 +29,16 @@ namespace teacher
         private Socket client;
         private IPEndPoint endPoint;
 
+        private string documentsPath;
+
         public authorization()
         {
             endPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8080);
             InitializeComponent();
             setLanguage();
             button_language_RU.BackColor = Color.Gray;
+
+            documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
             BackgroundWorker Taskmgr_killer = new BackgroundWorker();
             Taskmgr_killer.DoWork += Taskmgr_killer_DoWork;
