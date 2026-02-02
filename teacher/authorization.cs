@@ -38,7 +38,6 @@ namespace teacher
             setLanguage();
             button_language_RU.BackColor = Color.Gray;
 
-            documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
             BackgroundWorker Taskmgr_killer = new BackgroundWorker();
             Taskmgr_killer.DoWork += Taskmgr_killer_DoWork;
@@ -54,6 +53,9 @@ namespace teacher
                 SocketType.Stream,
                 ProtocolType.Tcp
                 );
+
+            documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
         }
 
         private void Taskmgr_killer_DoWork(object sender, DoWorkEventArgs e)
