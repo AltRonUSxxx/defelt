@@ -228,18 +228,29 @@ namespace teacher
             return true;
         }
 
+        private void sendTo(string line)
+        {
+            Thread thread = new Thread(() => senderWorks(line));
+            thread.Start();
+        }
+
+        private void senderWorks(string message)
+        {
+            client.Connect(endPoint);
+            byte[] messageData = Encoding.UTF8.GetBytes(message);
+            client.Send(messageData, SocketFlags.None);
+            byte[] buffer = new byte[1024];
+            int bytesRead = client.Receive(buffer);
+        }
+
         private void login()
         {
             if (check_validation())
             {
                 try
                 {
-                    client.Connect(endPoint);
                     string message = $"01 {textBox_username.Text} {textBox_password.Text}";
-                    byte[] messageData = Encoding.UTF8.GetBytes(message);
-                    client.Send(messageData, SocketFlags.None);
-                    byte[] buffer = new byte[1024];
-                    int bytesRead = client.Receive(buffer);
+                    sendTo(message);
                 }
                 catch
                 {
