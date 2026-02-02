@@ -239,8 +239,7 @@ namespace teacher
             client.Connect(endPoint);
             byte[] messageData = Encoding.UTF8.GetBytes(message);
             client.Send(messageData, SocketFlags.None);
-            byte[] buffer = new byte[1024];
-            int bytesRead = client.Receive(buffer);
+            client.Close();
         }
 
         private void login()
