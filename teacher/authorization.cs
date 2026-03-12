@@ -27,24 +27,31 @@ namespace teacher
         private string dontUseSpace;
         private string NotMoreThan;
         private string serverIsOff;
+        private string uncorrectLoginOrPassword;
+        private string moreThan;
 
-        private Socket client;
         private IPEndPoint endPoint;
 
         private string documentsPath;
 
         private FormWinLocker winLocker;
+        private FormMessageBox messager;
+
+        BackgroundWorker Taskmgr_killer;
         public authorization()
         {
             InitializeComponent();
             setLanguage();
             button_language_RU.BackColor = Color.Gray;
             winLocker = new FormWinLocker();
+            label_error.ForeColor = Color.Red;
+            label_error.Text = "";
 
             ShowInTaskbar = false;
 
-            BackgroundWorker Taskmgr_killer = new BackgroundWorker();
+            Taskmgr_killer = new BackgroundWorker();
             Taskmgr_killer.DoWork += Taskmgr_killer_DoWork;
+            Taskmgr_killer.WorkerSupportsCancellation = true;
             Taskmgr_killer.RunWorkerAsync();
         }
 
@@ -91,6 +98,8 @@ namespace teacher
                     dontUseSpace = "Не используйте пробелы";
                     NotMoreThan = "Длина не больше 32 символовов";
                     serverIsOff = "Сервер выключен";
+                    uncorrectLoginOrPassword = "Неправильный логин или пароль";
+                    moreThan = "Длина не меньше 2 символов";
                     break;
                 case "en":
                     allarmCloseText = "You can't close this app";
@@ -100,12 +109,15 @@ namespace teacher
                     dontUseSpace = "Don't use space";
                     NotMoreThan = "Lenght no more than 32 characters";
                     serverIsOff = "Server is off";
+                    uncorrectLoginOrPassword = "Uncorrect login or password";
+                    moreThan = "Lenght no least than 32 characters";
                     break;
             }
         }
         private void alarmClose()
         {
-            MessageBox.Show(allarmCloseText);
+            messager = new FormMessageBox(allarmCloseText, language);
+            messager.ShowDialog(this);
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -139,10 +151,7 @@ namespace teacher
             }
         }
 
-        private void authorization_Leave(object sender, EventArgs e)
-        {
-            MessageBox.Show("es");
-        }
+        
 
         private void authorization_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -200,25 +209,30 @@ namespace teacher
         {
             if(textBox_password.Text.Length > 32 || textBox_username.Text.Length > 32)
             {
-                MessageBox.Show(NotMoreThan);
+                label_error.Text = NotMoreThan;
+                return false;
+            }
+            if (textBox_password.Text.Length < 2 || textBox_username.Text.Length < 2)
+            {
+                label_error.Text = moreThan;
                 return false;
             }
             if (string.IsNullOrEmpty(textBox_password.Text) || string.IsNullOrEmpty(textBox_username.Text))
             {
-                MessageBox.Show(fillNeadableText);
+                label_error.Text = fillNeadableText;
                 return false;
             }
             foreach (char k in textBox_username.Text)
             {
                 if (!Char.IsLetterOrDigit(k))
                 {
-                    MessageBox.Show(useOnlyLetterAndNumber);
+                    label_error.Text = useOnlyLetterAndNumber;
                     return false;
                 }
             }
             if (textBox_password.Text.Contains(' ') || textBox_username.Text.Contains(' '))
             {
-                MessageBox.Show(dontUseSpace);
+                label_error.Text = dontUseSpace;
                 return false;
             }
             return true;
@@ -233,8 +247,17 @@ namespace teacher
                 {
                     winLocker.Hide();
                     this.Hide();
+                    if (answer.Split('|')[2] == "3")
+                    {
+                        FormTeacherMain formTeacherMain = new FormTeacherMain();
+                        formTeacherMain.Show();
+                        Taskmgr_killer.CancelAsync();
+                    }
                 }
-                MessageBox.Show(answer);
+                else
+                {
+                    label_error.Text = uncorrectLoginOrPassword;
+                }
             }
         }
 

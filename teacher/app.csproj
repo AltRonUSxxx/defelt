@@ -54,6 +54,18 @@
     <Compile Include="authorization.Designer.cs">
       <DependentUpon>authorization.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMessageBox.Designer.cs">
+      <DependentUpon>FormMessageBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormTeacherMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTeacherMain.Designer.cs">
+      <DependentUpon>FormTeacherMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormWinLocker.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,6 +77,12 @@
     <Compile Include="ServerConnection.cs" />
     <EmbeddedResource Include="authorization.resx">
       <DependentUpon>authorization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMessageBox.resx">
+      <DependentUpon>FormMessageBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTeacherMain.resx">
+      <DependentUpon>FormTeacherMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormWinLocker.resx">
       <DependentUpon>FormWinLocker.cs</DependentUpon>

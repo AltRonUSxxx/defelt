@@ -16,14 +16,14 @@ namespace server
 
                 if (user is null)
                 {
-                    return "NOT FOUND";
+                    return "NOT FOUND|";
                 }
 
                 if (passwordHasher.verifyPassword(password, user.hashed_password))
                 {
                     return $"SUCCESS|{user.id}|{db.security_roles.FirstOrDefault(x => x.id == user.securityLvl_id).id}";
                 }
-                return "WRONG_PASSWORD";
+                return "WRONG_PASSWORD|";
             }
         }
 
@@ -31,7 +31,7 @@ namespace server
         {
             using (var db = new teacher_studentEntities())
             {
-                var attentionet  = db.attentions.FirstOrDefault(x => x.user_id == id);
+                var attentionet  = db.attentions.First(x => x.user_id == id);
                 if(!(attentionet is null))
                 {
                     if (online)
