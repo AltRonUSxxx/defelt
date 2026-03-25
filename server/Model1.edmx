@@ -9,9 +9,10 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="user_id" Type="int" Nullable="false" />
           <Property Name="date" Type="datetime" />
+          <Property Name="isOnline" Type="bit" />
         </EntityType>
         <EntityType Name="fullnames">
           <Key>
@@ -22,6 +23,13 @@
           <Property Name="middlename" Type="nvarchar" MaxLength="255" />
           <Property Name="user_id" Type="int" Nullable="false" />
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="groups">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="lessons">
           <Key>
@@ -66,6 +74,7 @@
           <Property Name="hashed_password" Type="nvarchar(max)" Nullable="false" />
           <Property Name="securityLvl_id" Type="int" Nullable="false" />
           <Property Name="email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="group_id" Type="int" />
         </EntityType>
         <Association Name="FK_attentions_users">
           <End Role="users" Type="Self.users" Multiplicity="1" />
@@ -115,6 +124,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_users_groups">
+          <End Role="groups" Type="Self.groups" Multiplicity="0..1" />
+          <End Role="users" Type="Self.users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="groups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="users">
+              <PropertyRef Name="group_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_users_security_roles">
           <End Role="security_roles" Type="Self.security_roles" Multiplicity="1" />
           <End Role="users" Type="Self.users" Multiplicity="*" />
@@ -130,6 +151,7 @@
         <EntityContainer Name="teacher_studentModelStoreContainer">
           <EntitySet Name="attentions" EntityType="Self.attentions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="fullnames" EntityType="Self.fullnames" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="groups" EntityType="Self.groups" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="lessons" EntityType="Self.lessons" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="security_roles" EntityType="Self.security_roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="status" EntityType="Self.status" Schema="dbo" store:Type="Tables" />
@@ -151,6 +173,10 @@
             <End Role="users" EntitySet="users" />
             <End Role="lessons" EntitySet="lessons" />
           </AssociationSet>
+          <AssociationSet Name="FK_users_groups" Association="Self.FK_users_groups">
+            <End Role="groups" EntitySet="groups" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
           <AssociationSet Name="FK_users_security_roles" Association="Self.FK_users_security_roles">
             <End Role="security_roles" EntitySet="security_roles" />
             <End Role="users" EntitySet="users" />
@@ -165,9 +191,10 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="user_id" Type="Int32" Nullable="false" />
           <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="isOnline" Type="Boolean" />
           <NavigationProperty Name="user" Relationship="Self.FK_attentions_users" FromRole="attentions" ToRole="users" />
         </EntityType>
         <EntityType Name="fullname">
@@ -180,6 +207,14 @@
           <Property Name="user_id" Type="Int32" Nullable="false" />
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="user" Relationship="Self.FK_fullnames_users" FromRole="fullnames" ToRole="users" />
+        </EntityType>
+        <EntityType Name="group">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="users" Relationship="Self.FK_users_groups" FromRole="groups" ToRole="users" />
         </EntityType>
         <EntityType Name="lesson">
           <Key>
@@ -228,8 +263,10 @@
           <Property Name="hashed_password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="securityLvl_id" Type="Int32" Nullable="false" />
           <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="group_id" Type="Int32" />
           <NavigationProperty Name="attentions" Relationship="Self.FK_attentions_users" FromRole="users" ToRole="attentions" />
           <NavigationProperty Name="fullnames" Relationship="Self.FK_fullnames_users" FromRole="users" ToRole="fullnames" />
+          <NavigationProperty Name="group" Relationship="Self.FK_users_groups" FromRole="users" ToRole="groups" />
           <NavigationProperty Name="lessons" Relationship="Self.FK_lessons_users" FromRole="users" ToRole="lessons" />
           <NavigationProperty Name="security_roles" Relationship="Self.FK_users_security_roles" FromRole="users" ToRole="security_roles" />
         </EntityType>
@@ -254,6 +291,18 @@
             </Principal>
             <Dependent Role="fullnames">
               <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_users_groups">
+          <End Role="groups" Type="Self.group" Multiplicity="0..1" />
+          <End Role="users" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="groups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="users">
+              <PropertyRef Name="group_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -296,6 +345,7 @@
         <EntityContainer Name="teacher_studentEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="attentions" EntityType="Self.attention" />
           <EntitySet Name="fullnames" EntityType="Self.fullname" />
+          <EntitySet Name="groups" EntityType="Self.group" />
           <EntitySet Name="lessons" EntityType="Self.lesson" />
           <EntitySet Name="security_roles" EntityType="Self.security_roles" />
           <EntitySet Name="status" EntityType="Self.status" />
@@ -308,6 +358,10 @@
           <AssociationSet Name="FK_fullnames_users" Association="Self.FK_fullnames_users">
             <End Role="users" EntitySet="users" />
             <End Role="fullnames" EntitySet="fullnames" />
+          </AssociationSet>
+          <AssociationSet Name="FK_users_groups" Association="Self.FK_users_groups">
+            <End Role="groups" EntitySet="groups" />
+            <End Role="users" EntitySet="users" />
           </AssociationSet>
           <AssociationSet Name="FK_lessons_status" Association="Self.FK_lessons_status">
             <End Role="status" EntitySet="status" />
@@ -334,6 +388,7 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="isOnline" ColumnName="isOnline" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -345,6 +400,14 @@
                 <ScalarProperty Name="middlename" ColumnName="middlename" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="groups">
+            <EntityTypeMapping TypeName="teacher_studentModel.group">
+              <MappingFragment StoreEntitySet="groups">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -394,6 +457,7 @@
                 <ScalarProperty Name="hashed_password" ColumnName="hashed_password" />
                 <ScalarProperty Name="securityLvl_id" ColumnName="securityLvl_id" />
                 <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="group_id" ColumnName="group_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -12,13 +12,18 @@ namespace server
     using System;
     using System.Collections.Generic;
     
-    public partial class attention
+    public partial class group
     {
-        public int id { get; set; }
-        public int user_id { get; set; }
-        public Nullable<System.DateTime> date { get; set; }
-        public Nullable<bool> isOnline { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public group()
+        {
+            this.users = new HashSet<user>();
+        }
     
-        public virtual user user { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<user> users { get; set; }
     }
 }

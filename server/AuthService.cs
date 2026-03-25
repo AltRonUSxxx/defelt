@@ -27,35 +27,164 @@ namespace server
             }
         }
 
+        private static async Task<int> getGroup_id(string student_group)
+        {
+            using (var db = new teacher_studentEntities())
+            {
+                group checkGroup = db.groups.FirstOrDefault(x => x.name == student_group);
+                if(checkGroup == null)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return checkGroup.id;
+                }
+            }
+        }
+
+        private static async Task<string> getGroup_name(int student_group_id)
+        {
+            using (var db = new teacher_studentEntities())
+            {
+                group checkGroup = db.groups.FirstOrDefault(x => x.id == student_group_id);
+                if (checkGroup == null)
+                {
+                    return "-";
+                }
+                else
+                {
+                    return checkGroup.name;
+                }
+            }
+        }
+
+        public static async Task<string> registerAsync(string username, string password, string email, string firstname = "-", string lastname = "-", string middlename = "-", string student_group = "-")
+        {
+            using (var db = new teacher_studentEntities())
+            {
+                var userCheck = db.users.FirstOrDefault(x => x.username.Equals(username));
+                if(userCheck != null)
+                {
+                    return "USERNAME_ALREADY_TAKEN";
+                }
+                var emailCheck = db.users.FirstOrDefault(x => x.email.Equals(email));
+                if (emailCheck != null)
+                {
+                    return "EMAIL_ALREADY_TAKEN";
+                }
+                else
+                {
+                    try
+                    {
+                        user newUser = new user();
+                        newUser.username = username;
+                        newUser.hashed_password = passwordHasher.hashPassword(password);
+                        newUser.securityLvl_id = 2;
+                        newUser.email = email;
+                        newUser.group_id = await getGroup_id(student_group);
+                        db.users.Add(newUser);
+                        fullname newFullname = new fullname();
+                        newFullname.lastname = lastname;
+                        newFullname.name = firstname;
+                        newFullname.middlename = middlename;
+                        newFullname.user_id = newUser.id;
+                        db.fullnames.Add(newFullname);
+                        await db.SaveChangesAsync();
+                        return "SUCCESS";
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.ToString());
+                        return "UNEXPECTED_ERROR";
+                    }
+                }
+            }
+        }
+
+        private static string getFullName(int student_id)
+        {
+            using (var db = new teacher_studentEntities())
+            {
+                fullname student_fullname = db.fullnames.FirstOrDefault(x => x.user_id == student_id);
+                string name = student_fullname.name == "" ? "-" : student_fullname.name;
+                string lastname = student_fullname.lastname == "" ? "-" : student_fullname.lastname;
+                string middlename = student_fullname.middlename == "" ? "-" : student_fullname.middlename;
+
+                return $"{lastname} {name} {middlename}";
+            }
+        }
+
+        private static string getStatus(int student_id)
+        {
+            using (var db = new teacher_studentEntities())
+            {
+                attention status = db.attentions.FirstOrDefault(x => x.user_id == student_id);
+                if (status != null)
+                {
+                    return status.isOnline == true ? "ONLINE" : "OFFLINE";
+                }
+                return "OFFLINE";
+            }
+        }
+        private static string getStatus_time(int student_id)
+        {
+            using (var db = new teacher_studentEntities())
+            {
+                attention status = db.attentions.FirstOrDefault(x => x.user_id == student_id);
+                if(status == null)
+                {
+                    status = new attention();
+                    status.user_id = student_id;
+                    status.date = DateTime.Now;
+                    status.isOnline = false;
+                    db.attentions.Add(status);
+                    db.SaveChanges();
+                }
+                DateTime time = status.date.Value;
+                if(status.isOnline == true)
+                {
+                    return $"ONLINE [{time.Day}.{time.Month}.{time.Year}][{time.Hour}:{time.Minute}]";
+                }
+                else
+                {
+                    return $"OFFLINE [{time.Day}.{time.Month}.{time.Year}][{time.Hour}:{time.Minute}]";
+                }
+            }
+        }
+
+        public static async Task<string[]> getStudents()
+        {
+            using (var db = new teacher_studentEntities())
+            {
+                string[] answer = { };
+                user[] allStudents = db.users.Where(x => x.securityLvl_id == 2).Select(x => x).ToArray();
+                foreach(user student in allStudents)
+                {
+                    string temp = $"{getFullName(student.id)}|{student.username}|{getStatus(student.id)}|{ await getGroup_name(student.id)}";
+                    answer = answer.Append(temp).ToArray();
+                }
+                return answer;
+            }
+        }
+
         public static async Task makeStatus(int id, bool online)
         {
             using (var db = new teacher_studentEntities())
             {
-                var attentionet  = db.attentions.First(x => x.user_id == id);
-                if(!(attentionet is null))
+                var attentionet = db.attentions.FirstOrDefault(x => x.user_id == id);
+                if(attentionet == null)
                 {
-                    if (online)
-                    {
-                        attentionet.date = DateTime.Now;
-                    }
-                    else
-                    {
-                        attentionet.date = null;
-                    }
+                    attention attent_new = new attention();
+                    attent_new.date = DateTime.Now;
+                    attent_new.isOnline = online;
+                    attent_new.user_id = id;
+                    db.attentions.Add(attent_new);
                 }
                 else
                 {
-                    attention attent_new = new attention();
-                    if(online)
-                    {
-                        attent_new.date = DateTime.Now;
-                    }
-                    else
-                    {
-                        attent_new.date = null;
-                    }
-                    attent_new.user_id = id;
-                    db.attentions.Add(attent_new);
+                    attentionet.date = DateTime.Now;
+                    attentionet.isOnline = online;
                 }
                 db.SaveChanges();
             }

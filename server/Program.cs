@@ -57,19 +57,37 @@ namespace server
                         string[] arguments = request.Split('|');
                         if (request.StartsWith("LOGIN"))
                         {
+                            addLogs($"LOGIN request [{user_id}]");
                             string result = await AuthService.loginAsync(arguments[1], arguments[2]);
                             await writer.WriteLineAsync(result);
                             if(result.StartsWith("SUCCESS"))
                             {
+                                addLogs("+user logined");
                                 user_id = Convert.ToInt32(result.Split('|')[1]);
                                 await AuthService.makeStatus(user_id, true);
                             }
+                        }
+                        else if(request.StartsWith("REGISTER"))
+                        {
+                            addLogs($"REGISTER request [{user_id}]");
+                            string result = await AuthService.registerAsync(arguments[1], arguments[2], arguments[3], arguments[4], arguments[5], arguments[6]);
+                            await writer.WriteLineAsync(result);
+                            if (result.StartsWith("SUCCESS"))
+                            {
+                                addLogs("New student!");
+                            }
+                        }
+                        else if(request.StartsWith("GET_STUDENTS"))
+                        {
+                            addLogs($"GET_STUDENTS request [{user_id}]");
+                            string[] result = await AuthService.getStudents();
+                            await writer.WriteLineAsync(string.Join("/", result));
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    addLogs(ex.Message);
+                    addLogs(ex.ToString());
                 }
                 finally
                 {

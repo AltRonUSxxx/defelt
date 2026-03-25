@@ -27,11 +27,13 @@ namespace server
         public string hashed_password { get; set; }
         public int securityLvl_id { get; set; }
         public string email { get; set; }
+        public Nullable<int> group_id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<attention> attentions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<fullname> fullnames { get; set; }
+        public virtual group group { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<lesson> lessons { get; set; }
         public virtual security_roles security_roles { get; set; }

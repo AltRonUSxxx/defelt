@@ -4,16 +4,18 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2d060e96583240cd9d5ce61f8b395c21" Name="Diagram1">
-        <EntityTypeShape EntityType="teacher_studentModel.attention" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="teacher_studentModel.fullname" Width="1.5" PointX="5.25" PointY="5.75" IsExpanded="true" />
+      <Diagram DiagramId="e6298ce0fbca44039830f37470cc8080" Name="Diagram1">
+        <EntityTypeShape EntityType="teacher_studentModel.attention" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="teacher_studentModel.fullname" Width="1.5" PointX="5.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="teacher_studentModel.group" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="teacher_studentModel.lesson" Width="1.5" PointX="8.25" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="teacher_studentModel.security_roles" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="teacher_studentModel.security_roles" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="teacher_studentModel.status" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="teacher_studentModel.sysdiagram" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="teacher_studentModel.user" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="teacher_studentModel.sysdiagram" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="teacher_studentModel.user" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
         <AssociationConnector Association="teacher_studentModel.FK_attentions_users" ManuallyRouted="false" />
         <AssociationConnector Association="teacher_studentModel.FK_fullnames_users" ManuallyRouted="false" />
+        <AssociationConnector Association="teacher_studentModel.FK_users_groups" ManuallyRouted="false" />
         <AssociationConnector Association="teacher_studentModel.FK_lessons_status" ManuallyRouted="false" />
         <AssociationConnector Association="teacher_studentModel.FK_lessons_users" ManuallyRouted="false" />
         <AssociationConnector Association="teacher_studentModel.FK_users_security_roles" ManuallyRouted="false" />

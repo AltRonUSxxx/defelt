@@ -33,35 +33,46 @@
             this.label_close = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.button_register_new_student = new System.Windows.Forms.Button();
-            this.panel_register_new_student = new System.Windows.Forms.Panel();
-            this.label_rns_firstName = new System.Windows.Forms.Label();
-            this.textBox_rns_firstName = new System.Windows.Forms.TextBox();
-            this.label_rns_lastName = new System.Windows.Forms.Label();
-            this.textBox_rns_lastName = new System.Windows.Forms.TextBox();
-            this.label_rns_middleName = new System.Windows.Forms.Label();
-            this.textBox_rns_middleName = new System.Windows.Forms.TextBox();
-            this.label_rns_email = new System.Windows.Forms.Label();
-            this.textBox_rns_email = new System.Windows.Forms.TextBox();
-            this.label_rns_group = new System.Windows.Forms.Label();
-            this.comboBox_rns_group = new System.Windows.Forms.ComboBox();
-            this.label_rns_passwordCofirm = new System.Windows.Forms.Label();
-            this.textBox_rns_passwordConfirm = new System.Windows.Forms.TextBox();
-            this.label_rns_password = new System.Windows.Forms.Label();
-            this.label_rns_login = new System.Windows.Forms.Label();
-            this.textBox_rns_password = new System.Windows.Forms.TextBox();
-            this.textBox_rns_login = new System.Windows.Forms.TextBox();
+            this.button_students = new System.Windows.Forms.Button();
             this.button_groups = new System.Windows.Forms.Button();
             this.panel_groups = new System.Windows.Forms.Panel();
-            this.dataGridView_groups = new System.Windows.Forms.DataGridView();
-            this.button_groups_add = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.button_groups_remove = new System.Windows.Forms.Button();
+            this.button_groups_add = new System.Windows.Forms.Button();
+            this.dataGridView_groups = new System.Windows.Forms.DataGridView();
+            this.panel_students = new System.Windows.Forms.Panel();
+            this.label_student_manangment = new System.Windows.Forms.Label();
+            this.button_students_remove = new System.Windows.Forms.Button();
+            this.button_students_add = new System.Windows.Forms.Button();
+            this.dataGridView_students = new System.Windows.Forms.DataGridView();
+            this.panel_students_add_menu = new System.Windows.Forms.Panel();
+            this.label_student_add_menu_email = new System.Windows.Forms.Label();
+            this.textBox_student_add_menu_email = new System.Windows.Forms.TextBox();
+            this.label_student_add_menu_error = new System.Windows.Forms.Label();
+            this.button_student_managment_add_menu_cancel = new System.Windows.Forms.Button();
+            this.button_student_managment_add_menu_add = new System.Windows.Forms.Button();
+            this.label_student_add_menu_group = new System.Windows.Forms.Label();
+            this.comboBox_student_add_menu_group = new System.Windows.Forms.ComboBox();
+            this.label_student_add_menu_middle_name = new System.Windows.Forms.Label();
+            this.textBox_student_add_menu_middle_name = new System.Windows.Forms.TextBox();
+            this.label_student_add_menu_last_name = new System.Windows.Forms.Label();
+            this.textBox_student_add_menu_last_name = new System.Windows.Forms.TextBox();
+            this.label_student_add_menu_first_name = new System.Windows.Forms.Label();
+            this.textBox_student_add_menu_first_name = new System.Windows.Forms.TextBox();
+            this.label_student_add_menu_password_confirm = new System.Windows.Forms.Label();
+            this.label_student_add_menu_password = new System.Windows.Forms.Label();
+            this.label_student_add_menu_username = new System.Windows.Forms.Label();
+            this.textBox_student_add_menu_password_confirm = new System.Windows.Forms.TextBox();
+            this.textBox_student_add_menu_password = new System.Windows.Forms.TextBox();
+            this.textBox_student_add_menu_username = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_uppestPanel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.panel_register_new_student.SuspendLayout();
             this.panel_groups.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_groups)).BeginInit();
+            this.panel_students.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_students)).BeginInit();
+            this.panel_students_add_menu.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox_uppestPanel
@@ -118,178 +129,17 @@
             this.pictureBox2.TabIndex = 13;
             this.pictureBox2.TabStop = false;
             // 
-            // button_register_new_student
+            // button_students
             // 
-            this.button_register_new_student.BackColor = System.Drawing.Color.Silver;
-            this.button_register_new_student.ForeColor = System.Drawing.Color.Black;
-            this.button_register_new_student.Location = new System.Drawing.Point(6, 36);
-            this.button_register_new_student.Name = "button_register_new_student";
-            this.button_register_new_student.Size = new System.Drawing.Size(188, 57);
-            this.button_register_new_student.TabIndex = 14;
-            this.button_register_new_student.Text = "{Register_new_student}";
-            this.button_register_new_student.UseVisualStyleBackColor = false;
-            this.button_register_new_student.Click += new System.EventHandler(this.button_register_Click);
-            // 
-            // panel_register_new_student
-            // 
-            this.panel_register_new_student.Controls.Add(this.label_rns_firstName);
-            this.panel_register_new_student.Controls.Add(this.textBox_rns_firstName);
-            this.panel_register_new_student.Controls.Add(this.label_rns_lastName);
-            this.panel_register_new_student.Controls.Add(this.textBox_rns_lastName);
-            this.panel_register_new_student.Controls.Add(this.label_rns_middleName);
-            this.panel_register_new_student.Controls.Add(this.textBox_rns_middleName);
-            this.panel_register_new_student.Controls.Add(this.label_rns_email);
-            this.panel_register_new_student.Controls.Add(this.textBox_rns_email);
-            this.panel_register_new_student.Controls.Add(this.label_rns_group);
-            this.panel_register_new_student.Controls.Add(this.comboBox_rns_group);
-            this.panel_register_new_student.Controls.Add(this.label_rns_passwordCofirm);
-            this.panel_register_new_student.Controls.Add(this.textBox_rns_passwordConfirm);
-            this.panel_register_new_student.Controls.Add(this.label_rns_password);
-            this.panel_register_new_student.Controls.Add(this.label_rns_login);
-            this.panel_register_new_student.Controls.Add(this.textBox_rns_password);
-            this.panel_register_new_student.Controls.Add(this.textBox_rns_login);
-            this.panel_register_new_student.Location = new System.Drawing.Point(216, 33);
-            this.panel_register_new_student.Name = "panel_register_new_student";
-            this.panel_register_new_student.Size = new System.Drawing.Size(584, 417);
-            this.panel_register_new_student.TabIndex = 15;
-            this.panel_register_new_student.Visible = false;
-            // 
-            // label_rns_firstName
-            // 
-            this.label_rns_firstName.AutoSize = true;
-            this.label_rns_firstName.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_rns_firstName.Location = new System.Drawing.Point(285, 15);
-            this.label_rns_firstName.Name = "label_rns_firstName";
-            this.label_rns_firstName.Size = new System.Drawing.Size(122, 22);
-            this.label_rns_firstName.TabIndex = 15;
-            this.label_rns_firstName.Text = "{first_name}";
-            // 
-            // textBox_rns_firstName
-            // 
-            this.textBox_rns_firstName.Location = new System.Drawing.Point(290, 40);
-            this.textBox_rns_firstName.Name = "textBox_rns_firstName";
-            this.textBox_rns_firstName.Size = new System.Drawing.Size(194, 32);
-            this.textBox_rns_firstName.TabIndex = 14;
-            // 
-            // label_rns_lastName
-            // 
-            this.label_rns_lastName.AutoSize = true;
-            this.label_rns_lastName.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_rns_lastName.Location = new System.Drawing.Point(285, 85);
-            this.label_rns_lastName.Name = "label_rns_lastName";
-            this.label_rns_lastName.Size = new System.Drawing.Size(119, 22);
-            this.label_rns_lastName.TabIndex = 13;
-            this.label_rns_lastName.Text = "{last_name}";
-            // 
-            // textBox_rns_lastName
-            // 
-            this.textBox_rns_lastName.Location = new System.Drawing.Point(290, 110);
-            this.textBox_rns_lastName.Name = "textBox_rns_lastName";
-            this.textBox_rns_lastName.Size = new System.Drawing.Size(194, 32);
-            this.textBox_rns_lastName.TabIndex = 12;
-            // 
-            // label_rns_middleName
-            // 
-            this.label_rns_middleName.AutoSize = true;
-            this.label_rns_middleName.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_rns_middleName.Location = new System.Drawing.Point(285, 155);
-            this.label_rns_middleName.Name = "label_rns_middleName";
-            this.label_rns_middleName.Size = new System.Drawing.Size(148, 22);
-            this.label_rns_middleName.TabIndex = 11;
-            this.label_rns_middleName.Text = "{middle_name}";
-            // 
-            // textBox_rns_middleName
-            // 
-            this.textBox_rns_middleName.Location = new System.Drawing.Point(290, 180);
-            this.textBox_rns_middleName.Name = "textBox_rns_middleName";
-            this.textBox_rns_middleName.Size = new System.Drawing.Size(194, 32);
-            this.textBox_rns_middleName.TabIndex = 10;
-            // 
-            // label_rns_email
-            // 
-            this.label_rns_email.AutoSize = true;
-            this.label_rns_email.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_rns_email.Location = new System.Drawing.Point(25, 225);
-            this.label_rns_email.Name = "label_rns_email";
-            this.label_rns_email.Size = new System.Drawing.Size(75, 22);
-            this.label_rns_email.TabIndex = 9;
-            this.label_rns_email.Text = "{Email}";
-            // 
-            // textBox_rns_email
-            // 
-            this.textBox_rns_email.Location = new System.Drawing.Point(30, 250);
-            this.textBox_rns_email.Name = "textBox_rns_email";
-            this.textBox_rns_email.Size = new System.Drawing.Size(194, 32);
-            this.textBox_rns_email.TabIndex = 8;
-            // 
-            // label_rns_group
-            // 
-            this.label_rns_group.AutoSize = true;
-            this.label_rns_group.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_rns_group.Location = new System.Drawing.Point(285, 225);
-            this.label_rns_group.Name = "label_rns_group";
-            this.label_rns_group.Size = new System.Drawing.Size(83, 22);
-            this.label_rns_group.TabIndex = 7;
-            this.label_rns_group.Text = "{Group}";
-            // 
-            // comboBox_rns_group
-            // 
-            this.comboBox_rns_group.FormattingEnabled = true;
-            this.comboBox_rns_group.Location = new System.Drawing.Point(290, 250);
-            this.comboBox_rns_group.Name = "comboBox_rns_group";
-            this.comboBox_rns_group.Size = new System.Drawing.Size(194, 32);
-            this.comboBox_rns_group.TabIndex = 6;
-            // 
-            // label_rns_passwordCofirm
-            // 
-            this.label_rns_passwordCofirm.AutoSize = true;
-            this.label_rns_passwordCofirm.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_rns_passwordCofirm.Location = new System.Drawing.Point(25, 155);
-            this.label_rns_passwordCofirm.Name = "label_rns_passwordCofirm";
-            this.label_rns_passwordCofirm.Size = new System.Drawing.Size(199, 22);
-            this.label_rns_passwordCofirm.TabIndex = 5;
-            this.label_rns_passwordCofirm.Text = "{Password_confirm}";
-            // 
-            // textBox_rns_passwordConfirm
-            // 
-            this.textBox_rns_passwordConfirm.Location = new System.Drawing.Point(30, 180);
-            this.textBox_rns_passwordConfirm.Name = "textBox_rns_passwordConfirm";
-            this.textBox_rns_passwordConfirm.Size = new System.Drawing.Size(194, 32);
-            this.textBox_rns_passwordConfirm.TabIndex = 4;
-            // 
-            // label_rns_password
-            // 
-            this.label_rns_password.AutoSize = true;
-            this.label_rns_password.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_rns_password.Location = new System.Drawing.Point(25, 85);
-            this.label_rns_password.Name = "label_rns_password";
-            this.label_rns_password.Size = new System.Drawing.Size(117, 22);
-            this.label_rns_password.TabIndex = 3;
-            this.label_rns_password.Text = "{Password}";
-            // 
-            // label_rns_login
-            // 
-            this.label_rns_login.AutoSize = true;
-            this.label_rns_login.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_rns_login.Location = new System.Drawing.Point(25, 15);
-            this.label_rns_login.Name = "label_rns_login";
-            this.label_rns_login.Size = new System.Drawing.Size(77, 22);
-            this.label_rns_login.TabIndex = 2;
-            this.label_rns_login.Text = "{Login}";
-            // 
-            // textBox_rns_password
-            // 
-            this.textBox_rns_password.Location = new System.Drawing.Point(30, 110);
-            this.textBox_rns_password.Name = "textBox_rns_password";
-            this.textBox_rns_password.Size = new System.Drawing.Size(194, 32);
-            this.textBox_rns_password.TabIndex = 1;
-            // 
-            // textBox_rns_login
-            // 
-            this.textBox_rns_login.Location = new System.Drawing.Point(30, 40);
-            this.textBox_rns_login.Name = "textBox_rns_login";
-            this.textBox_rns_login.Size = new System.Drawing.Size(194, 32);
-            this.textBox_rns_login.TabIndex = 0;
+            this.button_students.BackColor = System.Drawing.Color.Silver;
+            this.button_students.ForeColor = System.Drawing.Color.Black;
+            this.button_students.Location = new System.Drawing.Point(6, 36);
+            this.button_students.Name = "button_students";
+            this.button_students.Size = new System.Drawing.Size(188, 57);
+            this.button_students.TabIndex = 14;
+            this.button_students.Text = "{Students}";
+            this.button_students.UseVisualStyleBackColor = false;
+            this.button_students.Click += new System.EventHandler(this.button_students_Click);
             // 
             // button_groups
             // 
@@ -299,12 +149,13 @@
             this.button_groups.Name = "button_groups";
             this.button_groups.Size = new System.Drawing.Size(188, 57);
             this.button_groups.TabIndex = 16;
-            this.button_groups.Text = "{Make_new_group}";
+            this.button_groups.Text = "{Groups}";
             this.button_groups.UseVisualStyleBackColor = false;
             this.button_groups.Click += new System.EventHandler(this.button_groups_Click);
             // 
             // panel_groups
             // 
+            this.panel_groups.Controls.Add(this.label3);
             this.panel_groups.Controls.Add(this.button_groups_remove);
             this.panel_groups.Controls.Add(this.button_groups_add);
             this.panel_groups.Controls.Add(this.dataGridView_groups);
@@ -314,33 +165,288 @@
             this.panel_groups.TabIndex = 16;
             this.panel_groups.Visible = false;
             // 
-            // dataGridView_groups
+            // label3
             // 
-            this.dataGridView_groups.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_groups.Location = new System.Drawing.Point(15, 15);
-            this.dataGridView_groups.Name = "dataGridView_groups";
-            this.dataGridView_groups.Size = new System.Drawing.Size(557, 288);
-            this.dataGridView_groups.TabIndex = 0;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(11, 15);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(215, 24);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "{Group managment}";
+            // 
+            // button_groups_remove
+            // 
+            this.button_groups_remove.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_groups_remove.Location = new System.Drawing.Point(481, 345);
+            this.button_groups_remove.Name = "button_groups_remove";
+            this.button_groups_remove.Size = new System.Drawing.Size(91, 30);
+            this.button_groups_remove.TabIndex = 2;
+            this.button_groups_remove.Text = "{remove}";
+            this.button_groups_remove.UseVisualStyleBackColor = true;
             // 
             // button_groups_add
             // 
             this.button_groups_add.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_groups_add.Location = new System.Drawing.Point(384, 309);
+            this.button_groups_add.Location = new System.Drawing.Point(384, 345);
             this.button_groups_add.Name = "button_groups_add";
             this.button_groups_add.Size = new System.Drawing.Size(91, 30);
             this.button_groups_add.TabIndex = 1;
             this.button_groups_add.Text = "{add}";
             this.button_groups_add.UseVisualStyleBackColor = true;
             // 
-            // button_groups_remove
+            // dataGridView_groups
             // 
-            this.button_groups_remove.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_groups_remove.Location = new System.Drawing.Point(481, 309);
-            this.button_groups_remove.Name = "button_groups_remove";
-            this.button_groups_remove.Size = new System.Drawing.Size(91, 30);
-            this.button_groups_remove.TabIndex = 2;
-            this.button_groups_remove.Text = "{remove}";
-            this.button_groups_remove.UseVisualStyleBackColor = true;
+            this.dataGridView_groups.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_groups.Location = new System.Drawing.Point(15, 51);
+            this.dataGridView_groups.Name = "dataGridView_groups";
+            this.dataGridView_groups.Size = new System.Drawing.Size(557, 288);
+            this.dataGridView_groups.TabIndex = 0;
+            // 
+            // panel_students
+            // 
+            this.panel_students.Controls.Add(this.panel_students_add_menu);
+            this.panel_students.Controls.Add(this.label_student_manangment);
+            this.panel_students.Controls.Add(this.button_students_remove);
+            this.panel_students.Controls.Add(this.button_students_add);
+            this.panel_students.Controls.Add(this.dataGridView_students);
+            this.panel_students.Location = new System.Drawing.Point(216, 33);
+            this.panel_students.Name = "panel_students";
+            this.panel_students.Size = new System.Drawing.Size(584, 417);
+            this.panel_students.TabIndex = 17;
+            this.panel_students.Visible = false;
+            // 
+            // label_student_manangment
+            // 
+            this.label_student_manangment.AutoSize = true;
+            this.label_student_manangment.Location = new System.Drawing.Point(11, 15);
+            this.label_student_manangment.Name = "label_student_manangment";
+            this.label_student_manangment.Size = new System.Drawing.Size(231, 24);
+            this.label_student_manangment.TabIndex = 3;
+            this.label_student_manangment.Text = "{Student managment}";
+            // 
+            // button_students_remove
+            // 
+            this.button_students_remove.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_students_remove.Location = new System.Drawing.Point(481, 345);
+            this.button_students_remove.Name = "button_students_remove";
+            this.button_students_remove.Size = new System.Drawing.Size(91, 30);
+            this.button_students_remove.TabIndex = 2;
+            this.button_students_remove.Text = "{remove}";
+            this.button_students_remove.UseVisualStyleBackColor = true;
+            this.button_students_remove.Click += new System.EventHandler(this.button_students_remove_Click);
+            // 
+            // button_students_add
+            // 
+            this.button_students_add.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_students_add.Location = new System.Drawing.Point(366, 345);
+            this.button_students_add.Name = "button_students_add";
+            this.button_students_add.Size = new System.Drawing.Size(109, 30);
+            this.button_students_add.TabIndex = 1;
+            this.button_students_add.Text = "{add}";
+            this.button_students_add.UseVisualStyleBackColor = true;
+            this.button_students_add.Click += new System.EventHandler(this.button_students_add_Click);
+            // 
+            // dataGridView_students
+            // 
+            this.dataGridView_students.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_students.Location = new System.Drawing.Point(15, 51);
+            this.dataGridView_students.Name = "dataGridView_students";
+            this.dataGridView_students.Size = new System.Drawing.Size(557, 288);
+            this.dataGridView_students.TabIndex = 0;
+            // 
+            // panel_students_add_menu
+            // 
+            this.panel_students_add_menu.Controls.Add(this.label_student_add_menu_email);
+            this.panel_students_add_menu.Controls.Add(this.textBox_student_add_menu_email);
+            this.panel_students_add_menu.Controls.Add(this.label_student_add_menu_error);
+            this.panel_students_add_menu.Controls.Add(this.button_student_managment_add_menu_cancel);
+            this.panel_students_add_menu.Controls.Add(this.button_student_managment_add_menu_add);
+            this.panel_students_add_menu.Controls.Add(this.label_student_add_menu_group);
+            this.panel_students_add_menu.Controls.Add(this.comboBox_student_add_menu_group);
+            this.panel_students_add_menu.Controls.Add(this.label_student_add_menu_middle_name);
+            this.panel_students_add_menu.Controls.Add(this.textBox_student_add_menu_middle_name);
+            this.panel_students_add_menu.Controls.Add(this.label_student_add_menu_last_name);
+            this.panel_students_add_menu.Controls.Add(this.textBox_student_add_menu_last_name);
+            this.panel_students_add_menu.Controls.Add(this.label_student_add_menu_first_name);
+            this.panel_students_add_menu.Controls.Add(this.textBox_student_add_menu_first_name);
+            this.panel_students_add_menu.Controls.Add(this.label_student_add_menu_password_confirm);
+            this.panel_students_add_menu.Controls.Add(this.label_student_add_menu_password);
+            this.panel_students_add_menu.Controls.Add(this.label_student_add_menu_username);
+            this.panel_students_add_menu.Controls.Add(this.textBox_student_add_menu_password_confirm);
+            this.panel_students_add_menu.Controls.Add(this.textBox_student_add_menu_password);
+            this.panel_students_add_menu.Controls.Add(this.textBox_student_add_menu_username);
+            this.panel_students_add_menu.Location = new System.Drawing.Point(6, 51);
+            this.panel_students_add_menu.Name = "panel_students_add_menu";
+            this.panel_students_add_menu.Size = new System.Drawing.Size(566, 363);
+            this.panel_students_add_menu.TabIndex = 4;
+            this.panel_students_add_menu.Visible = false;
+            // 
+            // label_student_add_menu_email
+            // 
+            this.label_student_add_menu_email.AutoSize = true;
+            this.label_student_add_menu_email.Location = new System.Drawing.Point(24, 178);
+            this.label_student_add_menu_email.Name = "label_student_add_menu_email";
+            this.label_student_add_menu_email.Size = new System.Drawing.Size(87, 24);
+            this.label_student_add_menu_email.TabIndex = 18;
+            this.label_student_add_menu_email.Text = "*{email}";
+            // 
+            // textBox_student_add_menu_email
+            // 
+            this.textBox_student_add_menu_email.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox_student_add_menu_email.Location = new System.Drawing.Point(28, 205);
+            this.textBox_student_add_menu_email.Name = "textBox_student_add_menu_email";
+            this.textBox_student_add_menu_email.Size = new System.Drawing.Size(148, 26);
+            this.textBox_student_add_menu_email.TabIndex = 5;
+            // 
+            // label_student_add_menu_error
+            // 
+            this.label_student_add_menu_error.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_student_add_menu_error.ForeColor = System.Drawing.Color.DarkRed;
+            this.label_student_add_menu_error.Location = new System.Drawing.Point(9, 243);
+            this.label_student_add_menu_error.Name = "label_student_add_menu_error";
+            this.label_student_add_menu_error.Size = new System.Drawing.Size(545, 33);
+            this.label_student_add_menu_error.TabIndex = 16;
+            this.label_student_add_menu_error.Text = "{error}";
+            this.label_student_add_menu_error.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // button_student_managment_add_menu_cancel
+            // 
+            this.button_student_managment_add_menu_cancel.Location = new System.Drawing.Point(270, 279);
+            this.button_student_managment_add_menu_cancel.Name = "button_student_managment_add_menu_cancel";
+            this.button_student_managment_add_menu_cancel.Size = new System.Drawing.Size(115, 45);
+            this.button_student_managment_add_menu_cancel.TabIndex = 15;
+            this.button_student_managment_add_menu_cancel.Text = "{cancel}";
+            this.button_student_managment_add_menu_cancel.UseVisualStyleBackColor = true;
+            this.button_student_managment_add_menu_cancel.Click += new System.EventHandler(this.button_student_managment_add_menu_cancel_Click);
+            // 
+            // button_student_managment_add_menu_add
+            // 
+            this.button_student_managment_add_menu_add.Location = new System.Drawing.Point(149, 279);
+            this.button_student_managment_add_menu_add.Name = "button_student_managment_add_menu_add";
+            this.button_student_managment_add_menu_add.Size = new System.Drawing.Size(115, 45);
+            this.button_student_managment_add_menu_add.TabIndex = 14;
+            this.button_student_managment_add_menu_add.Text = "{add}";
+            this.button_student_managment_add_menu_add.UseVisualStyleBackColor = true;
+            this.button_student_managment_add_menu_add.Click += new System.EventHandler(this.button_student_managment_add_menu_add_Click);
+            // 
+            // label_student_add_menu_group
+            // 
+            this.label_student_add_menu_group.AutoSize = true;
+            this.label_student_add_menu_group.Location = new System.Drawing.Point(299, 174);
+            this.label_student_add_menu_group.Name = "label_student_add_menu_group";
+            this.label_student_add_menu_group.Size = new System.Drawing.Size(86, 24);
+            this.label_student_add_menu_group.TabIndex = 13;
+            this.label_student_add_menu_group.Text = "{group}";
+            // 
+            // comboBox_student_add_menu_group
+            // 
+            this.comboBox_student_add_menu_group.FormattingEnabled = true;
+            this.comboBox_student_add_menu_group.Location = new System.Drawing.Point(303, 201);
+            this.comboBox_student_add_menu_group.Name = "comboBox_student_add_menu_group";
+            this.comboBox_student_add_menu_group.Size = new System.Drawing.Size(148, 32);
+            this.comboBox_student_add_menu_group.TabIndex = 12;
+            // 
+            // label_student_add_menu_middle_name
+            // 
+            this.label_student_add_menu_middle_name.AutoSize = true;
+            this.label_student_add_menu_middle_name.Location = new System.Drawing.Point(299, 118);
+            this.label_student_add_menu_middle_name.Name = "label_student_add_menu_middle_name";
+            this.label_student_add_menu_middle_name.Size = new System.Drawing.Size(155, 24);
+            this.label_student_add_menu_middle_name.TabIndex = 11;
+            this.label_student_add_menu_middle_name.Text = "{middle name}";
+            // 
+            // textBox_student_add_menu_middle_name
+            // 
+            this.textBox_student_add_menu_middle_name.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox_student_add_menu_middle_name.Location = new System.Drawing.Point(303, 145);
+            this.textBox_student_add_menu_middle_name.Name = "textBox_student_add_menu_middle_name";
+            this.textBox_student_add_menu_middle_name.Size = new System.Drawing.Size(148, 26);
+            this.textBox_student_add_menu_middle_name.TabIndex = 10;
+            // 
+            // label_student_add_menu_last_name
+            // 
+            this.label_student_add_menu_last_name.AutoSize = true;
+            this.label_student_add_menu_last_name.Location = new System.Drawing.Point(299, 62);
+            this.label_student_add_menu_last_name.Name = "label_student_add_menu_last_name";
+            this.label_student_add_menu_last_name.Size = new System.Drawing.Size(124, 24);
+            this.label_student_add_menu_last_name.TabIndex = 9;
+            this.label_student_add_menu_last_name.Text = "{last name}";
+            // 
+            // textBox_student_add_menu_last_name
+            // 
+            this.textBox_student_add_menu_last_name.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox_student_add_menu_last_name.Location = new System.Drawing.Point(303, 89);
+            this.textBox_student_add_menu_last_name.Name = "textBox_student_add_menu_last_name";
+            this.textBox_student_add_menu_last_name.Size = new System.Drawing.Size(148, 26);
+            this.textBox_student_add_menu_last_name.TabIndex = 8;
+            // 
+            // label_student_add_menu_first_name
+            // 
+            this.label_student_add_menu_first_name.AutoSize = true;
+            this.label_student_add_menu_first_name.Location = new System.Drawing.Point(299, 5);
+            this.label_student_add_menu_first_name.Name = "label_student_add_menu_first_name";
+            this.label_student_add_menu_first_name.Size = new System.Drawing.Size(127, 24);
+            this.label_student_add_menu_first_name.TabIndex = 7;
+            this.label_student_add_menu_first_name.Text = "{first name}";
+            // 
+            // textBox_student_add_menu_first_name
+            // 
+            this.textBox_student_add_menu_first_name.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox_student_add_menu_first_name.Location = new System.Drawing.Point(303, 32);
+            this.textBox_student_add_menu_first_name.Name = "textBox_student_add_menu_first_name";
+            this.textBox_student_add_menu_first_name.Size = new System.Drawing.Size(148, 26);
+            this.textBox_student_add_menu_first_name.TabIndex = 6;
+            // 
+            // label_student_add_menu_password_confirm
+            // 
+            this.label_student_add_menu_password_confirm.AutoSize = true;
+            this.label_student_add_menu_password_confirm.Location = new System.Drawing.Point(24, 118);
+            this.label_student_add_menu_password_confirm.Name = "label_student_add_menu_password_confirm";
+            this.label_student_add_menu_password_confirm.Size = new System.Drawing.Size(215, 24);
+            this.label_student_add_menu_password_confirm.TabIndex = 5;
+            this.label_student_add_menu_password_confirm.Text = "*{password confirm}";
+            // 
+            // label_student_add_menu_password
+            // 
+            this.label_student_add_menu_password.AutoSize = true;
+            this.label_student_add_menu_password.Location = new System.Drawing.Point(24, 62);
+            this.label_student_add_menu_password.Name = "label_student_add_menu_password";
+            this.label_student_add_menu_password.Size = new System.Drawing.Size(132, 24);
+            this.label_student_add_menu_password.TabIndex = 4;
+            this.label_student_add_menu_password.Text = "*{password}";
+            // 
+            // label_student_add_menu_username
+            // 
+            this.label_student_add_menu_username.AutoSize = true;
+            this.label_student_add_menu_username.Location = new System.Drawing.Point(24, 5);
+            this.label_student_add_menu_username.Name = "label_student_add_menu_username";
+            this.label_student_add_menu_username.Size = new System.Drawing.Size(135, 24);
+            this.label_student_add_menu_username.TabIndex = 3;
+            this.label_student_add_menu_username.Text = "*{username}";
+            // 
+            // textBox_student_add_menu_password_confirm
+            // 
+            this.textBox_student_add_menu_password_confirm.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox_student_add_menu_password_confirm.Location = new System.Drawing.Point(28, 145);
+            this.textBox_student_add_menu_password_confirm.Name = "textBox_student_add_menu_password_confirm";
+            this.textBox_student_add_menu_password_confirm.Size = new System.Drawing.Size(148, 26);
+            this.textBox_student_add_menu_password_confirm.TabIndex = 2;
+            // 
+            // textBox_student_add_menu_password
+            // 
+            this.textBox_student_add_menu_password.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox_student_add_menu_password.Location = new System.Drawing.Point(28, 89);
+            this.textBox_student_add_menu_password.Name = "textBox_student_add_menu_password";
+            this.textBox_student_add_menu_password.Size = new System.Drawing.Size(148, 26);
+            this.textBox_student_add_menu_password.TabIndex = 1;
+            // 
+            // textBox_student_add_menu_username
+            // 
+            this.textBox_student_add_menu_username.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox_student_add_menu_username.Location = new System.Drawing.Point(28, 32);
+            this.textBox_student_add_menu_username.Name = "textBox_student_add_menu_username";
+            this.textBox_student_add_menu_username.Size = new System.Drawing.Size(148, 26);
+            this.textBox_student_add_menu_username.TabIndex = 0;
             // 
             // FormTeacherMain
             // 
@@ -349,14 +455,14 @@
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.button_groups);
-            this.Controls.Add(this.button_register_new_student);
+            this.Controls.Add(this.button_students);
             this.Controls.Add(this.label_close);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox_uppestPanel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.panel_students);
             this.Controls.Add(this.panel_groups);
-            this.Controls.Add(this.panel_register_new_student);
             this.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(6);
@@ -365,10 +471,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_uppestPanel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.panel_register_new_student.ResumeLayout(false);
-            this.panel_register_new_student.PerformLayout();
             this.panel_groups.ResumeLayout(false);
+            this.panel_groups.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_groups)).EndInit();
+            this.panel_students.ResumeLayout(false);
+            this.panel_students.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_students)).EndInit();
+            this.panel_students_add_menu.ResumeLayout(false);
+            this.panel_students_add_menu.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -381,28 +491,37 @@
         private System.Windows.Forms.Label label_close;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Button button_register_new_student;
-        private System.Windows.Forms.Panel panel_register_new_student;
-        private System.Windows.Forms.Label label_rns_password;
-        private System.Windows.Forms.Label label_rns_login;
-        private System.Windows.Forms.TextBox textBox_rns_password;
-        private System.Windows.Forms.TextBox textBox_rns_login;
-        private System.Windows.Forms.Label label_rns_passwordCofirm;
-        private System.Windows.Forms.TextBox textBox_rns_passwordConfirm;
-        private System.Windows.Forms.ComboBox comboBox_rns_group;
-        private System.Windows.Forms.Label label_rns_group;
-        private System.Windows.Forms.Label label_rns_email;
-        private System.Windows.Forms.TextBox textBox_rns_email;
-        private System.Windows.Forms.TextBox textBox_rns_middleName;
-        private System.Windows.Forms.Label label_rns_middleName;
-        private System.Windows.Forms.TextBox textBox_rns_lastName;
-        private System.Windows.Forms.Label label_rns_lastName;
-        private System.Windows.Forms.TextBox textBox_rns_firstName;
-        private System.Windows.Forms.Label label_rns_firstName;
+        private System.Windows.Forms.Button button_students;
         private System.Windows.Forms.Button button_groups;
         private System.Windows.Forms.Panel panel_groups;
         private System.Windows.Forms.DataGridView dataGridView_groups;
         private System.Windows.Forms.Button button_groups_remove;
         private System.Windows.Forms.Button button_groups_add;
+        private System.Windows.Forms.Panel panel_students;
+        private System.Windows.Forms.Button button_students_remove;
+        private System.Windows.Forms.Button button_students_add;
+        private System.Windows.Forms.DataGridView dataGridView_students;
+        private System.Windows.Forms.Label label_student_manangment;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel_students_add_menu;
+        private System.Windows.Forms.TextBox textBox_student_add_menu_password_confirm;
+        private System.Windows.Forms.TextBox textBox_student_add_menu_password;
+        private System.Windows.Forms.TextBox textBox_student_add_menu_username;
+        private System.Windows.Forms.Label label_student_add_menu_username;
+        private System.Windows.Forms.Label label_student_add_menu_password_confirm;
+        private System.Windows.Forms.Label label_student_add_menu_password;
+        private System.Windows.Forms.Label label_student_add_menu_middle_name;
+        private System.Windows.Forms.TextBox textBox_student_add_menu_middle_name;
+        private System.Windows.Forms.Label label_student_add_menu_last_name;
+        private System.Windows.Forms.TextBox textBox_student_add_menu_last_name;
+        private System.Windows.Forms.Label label_student_add_menu_first_name;
+        private System.Windows.Forms.TextBox textBox_student_add_menu_first_name;
+        private System.Windows.Forms.ComboBox comboBox_student_add_menu_group;
+        private System.Windows.Forms.Label label_student_add_menu_group;
+        private System.Windows.Forms.Button button_student_managment_add_menu_cancel;
+        private System.Windows.Forms.Button button_student_managment_add_menu_add;
+        private System.Windows.Forms.Label label_student_add_menu_error;
+        private System.Windows.Forms.Label label_student_add_menu_email;
+        private System.Windows.Forms.TextBox textBox_student_add_menu_email;
     }
 }

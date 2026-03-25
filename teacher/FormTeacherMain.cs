@@ -5,27 +5,147 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace teacher
 {
     public partial class FormTeacherMain : Form
     {
-        public FormTeacherMain()
+        private string language;
+
+        private string allarmCloseText;
+        private string fillNeadableText;
+        private string useOnlyLetterAndNumber;
+        private string dontUseSpace;
+        private string NotMoreThan;
+        private string serverIsOff;
+        private string uncorrectLoginOrPassword;
+        private string moreThan;
+        private string shouldSame;
+        private string wrongEmail;
+        private string successAdding;
+        private string alreadyTakenUsername;
+        private string alreadyTakenEmail;
+        private string failedAdding;
+        private string fullname_student;
+        private string login_student;
+        private string status_student;
+        private string group_student;
+        private string online_student;
+        private string offline_student;
+        private string select_row;
+
+
+        public FormTeacherMain(string language_out, string[] alertMessages)
         {
             this.DoubleBuffered = true;
             InitializeComponent();
-            panel_register_new_student.Visible = false;
+            panel_students.Visible = false;
+            label_student_add_menu_error.Text = "";
             makeSquareCorner();
+            language = language_out;
+            initLanguage(language_out, alertMessages);
+            initDataGridView(dataGridView_students);
+            comboBox_student_add_menu_group.DropDownStyle = ComboBoxStyle.DropDownList;
+        }
+
+        private async void initDataGridView(DataGridView dataGridView)
+        {
+            dataGridView.EnableHeadersVisualStyles = false;
+            dataGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.Gray;
+            dataGridView.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dataGridView.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 14, FontStyle.Bold);
+
+            dataGridView.DefaultCellStyle.BackColor = Color.White;
+            dataGridView.DefaultCellStyle.ForeColor = Color.Black;
+            dataGridView.DefaultCellStyle.Font = new Font("Arial", 12);
+
+            dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            dataGridView.ReadOnly = true;
+            dataGridView.AllowUserToAddRows = false;
+
+            dataGridView.BorderStyle = BorderStyle.None;
+            dataGridView.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal; // Только горизонтальные линии
+            dataGridView.GridColor = Color.DarkGray;
+
+            dataGridView.AllowUserToResizeColumns = false;
+            dataGridView.RowHeadersVisible = false;
+            dataGridView.AllowUserToResizeRows = false;
+            dataGridView.AllowUserToDeleteRows = false;
+            dataGridView.MultiSelect = false;
+
+            dataGridView.Columns[0].Width = 257;
+            dataGridView.Columns[1].Width = 110;
+            dataGridView.Columns[2].Width = 100;
+            dataGridView.Columns[3].Width = 90;
+        }
+
+        private async void initLanguage(string language, string[] alertMessages)
+        {
+            int index = 0;
+            allarmCloseText = alertMessages[index++];
+            fillNeadableText = alertMessages[index++];
+            useOnlyLetterAndNumber = alertMessages[index++];
+            dontUseSpace = alertMessages[index++];
+            NotMoreThan = alertMessages[index++];
+            serverIsOff = alertMessages[index++];
+            uncorrectLoginOrPassword = alertMessages[index++];
+            moreThan = alertMessages[index++];
+
+            switch (language)
+            {
+                case "ru":
+                    shouldSame = "Пароли должны быть одинаковыми!";
+                    wrongEmail = "Некорректная почта";
+                    successAdding = "Успешное добавление!";
+                    alreadyTakenUsername = "Этот логин уже занят!";
+                    alreadyTakenEmail = "Эта почта уже занята!";
+                    failedAdding = "Неизвестная ошибка!";
+                    fullname_student = "ФИО";
+                    login_student = "Логин";
+                    status_student = "Статус";
+                    group_student = "Группа";
+                    offline_student = "Не в сети";
+                    online_student = "В сети";
+                    select_row = "Выберете строку";
+
+                    button_groups.Text = "Группы";
+
+                    button_students.Text = "Студенты";
+                    label_student_add_menu_first_name.Text = "Имя";
+                    label_student_add_menu_last_name.Text = "Фамилия";
+                    label_student_add_menu_middle_name.Text = "Отчество";
+                    label_student_add_menu_group.Text = "Группа";
+                    label_student_add_menu_username.Text = "*Логин";
+                    label_student_add_menu_password.Text = "*Пароль";
+                    label_student_add_menu_password_confirm.Text = "*Потверждение пароля";
+                    label_student_manangment.Text = "Управление студентами";
+                    label_student_add_menu_email.Text = "*Почта";
+                    button_students_add.Text = "Добавить";
+                    button_student_managment_add_menu_add.Text = "Добавить";
+                    button_students_remove.Text = "Удалить";
+                    button_student_managment_add_menu_cancel.Text = "Отмена";
+                    break;
+            }
+
+            dataGridView_students.Columns.Add("student_fullname", fullname_student);
+            dataGridView_students.Columns.Add("student_group", login_student);
+            dataGridView_students.Columns.Add("student_status", status_student);
+            dataGridView_students.Columns.Add("student_group", group_student);
         }
 
         private void hideAllPanels()
         {
-            panel_register_new_student.Visible=false;
-            panel_register_new_student.Location = new System.Drawing.Point(-368, 33);
+            panel_students.Visible=false;
+            panel_students.Location = new System.Drawing.Point(-368, 33);
 
             panel_groups.Visible = false;
             panel_groups.Location = new System.Drawing.Point(-368, 33);
@@ -35,7 +155,7 @@ namespace teacher
         private void disableAllButtons()
         {
             disableButton(button_groups);
-            disableButton(button_register_new_student);
+            disableButton(button_students);
         }
 
         Point lastPoint;
@@ -106,27 +226,42 @@ namespace teacher
             panel.Visible = false;
         }
 
-        private void disableButton(Button button)
+        private void disableButton(System.Windows.Forms.Button button)
         {
             button.BackColor = Color.Silver;
             button.ForeColor = Color.Black;
         }
 
-        private void enableButton(Button button)
+        private void enableButton(System.Windows.Forms.Button button)
         {
             button.BackColor = Color.White;
             button.ForeColor = Color.Black;
         }
 
-        private async void button_register_Click(object sender, EventArgs e)
+        private async void button_students_Click(object sender, EventArgs e)
         {
+            loadStudents();
             hideAllPanels();
             disableAllButtons();
-            show_panel(panel_register_new_student);
-            enableButton(button_register_new_student);
+            show_panel(panel_students);
+            enableButton(button_students);
         }
 
-        
+        private async void loadStudents()
+        {
+            string answer = await Program.client.SendAsync($"GET_STUDENTS");
+            dataGridView_students.Rows.Clear();
+            string[] students = answer.Split('/');
+            foreach (string student in students)
+            {
+                string[] thisStud = student.Split('|');
+                thisStud[2] = thisStud[2].Replace("ONLINE", online_student);
+                thisStud[2] = thisStud[2].Replace("OFFLINE", offline_student);
+                dataGridView_students.Rows.Add(thisStud);
+            }
+        }
+
+
 
         private void button_groups_Click(object sender, EventArgs e)
         {
@@ -134,6 +269,127 @@ namespace teacher
             disableAllButtons();
             show_panel(panel_groups);
             enableButton(button_groups);
+        }
+
+        private void button_students_add_Click(object sender, EventArgs e)
+        {
+            panel_students_add_menu.Visible = true;
+        }
+
+        private void button_student_managment_add_menu_cancel_Click(object sender, EventArgs e)
+        {
+            panel_students_add_menu.Visible = false;
+        }
+
+        private async void button_student_managment_add_menu_add_Click(object sender, EventArgs e)
+        {
+            string username = textBox_student_add_menu_username.Text;
+            string password = textBox_student_add_menu_password.Text;
+            string password_confirm = textBox_student_add_menu_password_confirm.Text;
+            string email = textBox_student_add_menu_email.Text;
+
+            string firstname = textBox_student_add_menu_first_name.Text;
+            string lastname = textBox_student_add_menu_last_name.Text;
+            string middlename = textBox_student_add_menu_middle_name.Text;
+            string group = comboBox_student_add_menu_group.Text;
+
+            if(password != password_confirm)
+            {
+                label_student_add_menu_error.Text = shouldSame;
+                return;
+            }
+            if(!isCorrectEmail(email))
+            {
+                label_student_add_menu_error.Text = wrongEmail;
+                return;
+            }
+            else if (check_validation(password,username))
+            {
+                string answer = await Program.client.SendAsync($"REGISTER|{username}|{password}|{email}|{firstname}|{lastname}|{middlename}|{group}");
+                switch(answer)
+                {
+                    case "SUCCESS":
+                        loadStudents();
+                        textBox_student_add_menu_username.Text = "";
+                        textBox_student_add_menu_password.Text = "";
+                        textBox_student_add_menu_password_confirm.Text = "";
+                        textBox_student_add_menu_first_name.Text = "";
+                        textBox_student_add_menu_middle_name.Text = "";
+                        textBox_student_add_menu_last_name.Text = "";
+                        comboBox_student_add_menu_group.Text = "";
+                        FormMessageBox message = new FormMessageBox(successAdding, language);
+                        message.ShowDialog();
+                        panel_students_add_menu.Visible = false;
+                        break;
+                    case "USERNAME_ALREADY_TAKEN":
+                        label_student_add_menu_error.Text = alreadyTakenUsername;
+                        break;
+                    case "EMAIL_ALREADY_TAKEN":
+                        label_student_add_menu_error.Text = alreadyTakenEmail;
+                        break;
+                    default:
+                        label_student_add_menu_error.Text = failedAdding;
+                        break;
+                }
+            }
+        }
+
+        private bool isCorrectEmail(string email)
+        {
+            try
+            {
+                MailAddress mailCheck = new MailAddress(email);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        private bool check_validation(string password, string username)
+        {
+            if (password.Length > 32 || username.Length > 32)
+            {
+                label_student_add_menu_error.Text = NotMoreThan;
+                return false;
+            }
+            if (password.Length < 2 || username.Length < 2)
+            {
+                label_student_add_menu_error.Text = moreThan;
+                return false;
+            }
+            if (string.IsNullOrEmpty(password) || string.IsNullOrEmpty(username))
+            {
+                label_student_add_menu_error.Text = fillNeadableText;
+                return false;
+            }
+            foreach (char k in username)
+            {
+                if (!Char.IsLetterOrDigit(k))
+                {
+                    label_student_add_menu_error.Text = useOnlyLetterAndNumber;
+                    return false;
+                }
+            }
+            if (password.Contains(' ') || username.Contains(' '))
+            {
+                label_student_add_menu_error.Text = dontUseSpace;
+                return false;
+            }
+            return true;
+        }
+
+        private void button_students_remove_Click(object sender, EventArgs e)
+        {
+            if(dataGridView_students.SelectedRows == null)
+            {
+                FormMessageBox messageBox = new FormMessageBox(select_row, language);
+                messageBox.ShowDialog();
+                return;
+            }
+            string username = dataGridView_students.SelectedRows[0].Cells["Name"].Value.ToString();
+            MessageBox.Show(username);
         }
     }
 }

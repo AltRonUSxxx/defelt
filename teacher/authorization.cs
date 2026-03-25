@@ -47,10 +47,6 @@ namespace teacher
 
             ShowInTaskbar = false;
 
-            Taskmgr_killer = new BackgroundWorker();
-            Taskmgr_killer.DoWork += Taskmgr_killer_DoWork;
-            Taskmgr_killer.WorkerSupportsCancellation = true;
-            Taskmgr_killer.RunWorkerAsync();
         }
 
         private void authorization_Load(object sender, EventArgs e)
@@ -59,29 +55,7 @@ namespace teacher
             TopMost = true;
         }
 
-        private void Taskmgr_killer_DoWork(object sender, DoWorkEventArgs e)
-        {
-            BackgroundWorker Taskmgr_killer = sender as BackgroundWorker;
-            while (!Taskmgr_killer.CancellationPending)
-            {
-                Process[] processes = Process.GetProcesses();
-                foreach (Process process in processes)
-                {
-                    if (process.ProcessName.ToLower().Contains("taskmgr"))
-                    {
-                        try
-                        {
-                            process.Kill();
-                        }
-                        catch
-                        {
-
-                        }
-                    }
-                }
-            }
-
-        }
+        
         private void setLanguage()
         {
             switch (language)
@@ -244,9 +218,19 @@ namespace teacher
                     this.Hide();
                     if (answer.Split('|')[2] == "3")
                     {
-                        FormTeacherMain formTeacherMain = new FormTeacherMain();
+                        string[] alertMessages = 
+                            {
+                                allarmCloseText,
+                                fillNeadableText,
+                                useOnlyLetterAndNumber,
+                                dontUseSpace,
+                                NotMoreThan,
+                                serverIsOff,
+                                uncorrectLoginOrPassword,
+                                moreThan
+                            };
+                        FormTeacherMain formTeacherMain = new FormTeacherMain(language, alertMessages);
                         formTeacherMain.Show();
-                        Taskmgr_killer.CancelAsync();
                     }
                 }
                 else

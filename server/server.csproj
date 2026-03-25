@@ -65,6 +65,9 @@
     <Compile Include="fullname.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="group.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="lesson.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
