@@ -74,23 +74,23 @@
             this.button_lessons = new System.Windows.Forms.Button();
             this.panel_lessons = new System.Windows.Forms.Panel();
             this.panel_lessons_managment_add_menu = new System.Windows.Forms.Panel();
+            this.label_lessons_add_menu_group = new System.Windows.Forms.Label();
+            this.comboBox_lessons_add_menu_group = new System.Windows.Forms.ComboBox();
+            this.label_lessons_add_menu_end = new System.Windows.Forms.Label();
+            this.label_lessons_add_menu_start = new System.Windows.Forms.Label();
+            this.label_lessons_managment_add_menu_data = new System.Windows.Forms.Label();
+            this.datetimepicker_lessons_managment_add_menu_end = new System.Windows.Forms.DateTimePicker();
+            this.datetimepicker_lessons_managment_add_menu_start = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker_lessons_managment_add_menu_date = new System.Windows.Forms.DateTimePicker();
             this.button_lessons_managment_add_menu_cancel = new System.Windows.Forms.Button();
             this.label_lessons_managment_add_menu_theme = new System.Windows.Forms.Label();
+            this.textBox_lessons_managment_add_menu_theme = new System.Windows.Forms.TextBox();
             this.button_lessons_managment_add_menu_add = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label_lessons_managment = new System.Windows.Forms.Label();
             this.button_lessons_remove = new System.Windows.Forms.Button();
             this.button_lessons_add = new System.Windows.Forms.Button();
             this.dataGridView_lessons = new System.Windows.Forms.DataGridView();
-            this.textBox_lessons_managment_add_menu_theme = new System.Windows.Forms.TextBox();
-            this.dateTimePicker_lessons_managment_add_menu_date = new System.Windows.Forms.DateTimePicker();
-            this.label_lessons_managment_add_menu_start = new System.Windows.Forms.DateTimePicker();
-            this.label_lessons_managment_add_menu_end = new System.Windows.Forms.DateTimePicker();
-            this.label_lessons_managment_add_menu_data = new System.Windows.Forms.Label();
-            this.label_lessons_add_menu_start = new System.Windows.Forms.Label();
-            this.label_lessons_add_menu_end = new System.Windows.Forms.Label();
-            this.comboBox_lessons_add_menu_group = new System.Windows.Forms.ComboBox();
-            this.label_lessons_add_menu_group = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_uppestPanel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -575,8 +575,8 @@
             this.panel_lessons_managment_add_menu.Controls.Add(this.label_lessons_add_menu_end);
             this.panel_lessons_managment_add_menu.Controls.Add(this.label_lessons_add_menu_start);
             this.panel_lessons_managment_add_menu.Controls.Add(this.label_lessons_managment_add_menu_data);
-            this.panel_lessons_managment_add_menu.Controls.Add(this.label_lessons_managment_add_menu_end);
-            this.panel_lessons_managment_add_menu.Controls.Add(this.label_lessons_managment_add_menu_start);
+            this.panel_lessons_managment_add_menu.Controls.Add(this.datetimepicker_lessons_managment_add_menu_end);
+            this.panel_lessons_managment_add_menu.Controls.Add(this.datetimepicker_lessons_managment_add_menu_start);
             this.panel_lessons_managment_add_menu.Controls.Add(this.dateTimePicker_lessons_managment_add_menu_date);
             this.panel_lessons_managment_add_menu.Controls.Add(this.button_lessons_managment_add_menu_cancel);
             this.panel_lessons_managment_add_menu.Controls.Add(this.label_lessons_managment_add_menu_theme);
@@ -588,6 +588,75 @@
             this.panel_lessons_managment_add_menu.Size = new System.Drawing.Size(575, 372);
             this.panel_lessons_managment_add_menu.TabIndex = 4;
             this.panel_lessons_managment_add_menu.Visible = false;
+            // 
+            // label_lessons_add_menu_group
+            // 
+            this.label_lessons_add_menu_group.AutoSize = true;
+            this.label_lessons_add_menu_group.Location = new System.Drawing.Point(410, 130);
+            this.label_lessons_add_menu_group.Name = "label_lessons_add_menu_group";
+            this.label_lessons_add_menu_group.Size = new System.Drawing.Size(89, 24);
+            this.label_lessons_add_menu_group.TabIndex = 28;
+            this.label_lessons_add_menu_group.Text = "{Group}";
+            // 
+            // comboBox_lessons_add_menu_group
+            // 
+            this.comboBox_lessons_add_menu_group.FormattingEnabled = true;
+            this.comboBox_lessons_add_menu_group.Location = new System.Drawing.Point(412, 157);
+            this.comboBox_lessons_add_menu_group.Name = "comboBox_lessons_add_menu_group";
+            this.comboBox_lessons_add_menu_group.Size = new System.Drawing.Size(148, 32);
+            this.comboBox_lessons_add_menu_group.TabIndex = 27;
+            this.comboBox_lessons_add_menu_group.Click += new System.EventHandler(this.comboBox_lessons_add_menu_group_Click);
+            // 
+            // label_lessons_add_menu_end
+            // 
+            this.label_lessons_add_menu_end.AutoSize = true;
+            this.label_lessons_add_menu_end.Location = new System.Drawing.Point(301, 178);
+            this.label_lessons_add_menu_end.Name = "label_lessons_add_menu_end";
+            this.label_lessons_add_menu_end.Size = new System.Drawing.Size(66, 24);
+            this.label_lessons_add_menu_end.TabIndex = 26;
+            this.label_lessons_add_menu_end.Text = "{End}";
+            // 
+            // label_lessons_add_menu_start
+            // 
+            this.label_lessons_add_menu_start.AutoSize = true;
+            this.label_lessons_add_menu_start.Location = new System.Drawing.Point(301, 130);
+            this.label_lessons_add_menu_start.Name = "label_lessons_add_menu_start";
+            this.label_lessons_add_menu_start.Size = new System.Drawing.Size(74, 24);
+            this.label_lessons_add_menu_start.TabIndex = 25;
+            this.label_lessons_add_menu_start.Text = "{Start}";
+            // 
+            // label_lessons_managment_add_menu_data
+            // 
+            this.label_lessons_managment_add_menu_data.AutoSize = true;
+            this.label_lessons_managment_add_menu_data.Location = new System.Drawing.Point(13, 130);
+            this.label_lessons_managment_add_menu_data.Name = "label_lessons_managment_add_menu_data";
+            this.label_lessons_managment_add_menu_data.Size = new System.Drawing.Size(72, 24);
+            this.label_lessons_managment_add_menu_data.TabIndex = 24;
+            this.label_lessons_managment_add_menu_data.Text = "{Data}";
+            // 
+            // datetimepicker_lessons_managment_add_menu_end
+            // 
+            this.datetimepicker_lessons_managment_add_menu_end.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.datetimepicker_lessons_managment_add_menu_end.Location = new System.Drawing.Point(190, 177);
+            this.datetimepicker_lessons_managment_add_menu_end.Name = "datetimepicker_lessons_managment_add_menu_end";
+            this.datetimepicker_lessons_managment_add_menu_end.Size = new System.Drawing.Size(105, 32);
+            this.datetimepicker_lessons_managment_add_menu_end.TabIndex = 23;
+            // 
+            // datetimepicker_lessons_managment_add_menu_start
+            // 
+            this.datetimepicker_lessons_managment_add_menu_start.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.datetimepicker_lessons_managment_add_menu_start.Location = new System.Drawing.Point(190, 124);
+            this.datetimepicker_lessons_managment_add_menu_start.Name = "datetimepicker_lessons_managment_add_menu_start";
+            this.datetimepicker_lessons_managment_add_menu_start.Size = new System.Drawing.Size(105, 32);
+            this.datetimepicker_lessons_managment_add_menu_start.TabIndex = 22;
+            // 
+            // dateTimePicker_lessons_managment_add_menu_date
+            // 
+            this.dateTimePicker_lessons_managment_add_menu_date.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker_lessons_managment_add_menu_date.Location = new System.Drawing.Point(16, 157);
+            this.dateTimePicker_lessons_managment_add_menu_date.Name = "dateTimePicker_lessons_managment_add_menu_date";
+            this.dateTimePicker_lessons_managment_add_menu_date.Size = new System.Drawing.Size(134, 32);
+            this.dateTimePicker_lessons_managment_add_menu_date.TabIndex = 21;
             // 
             // button_lessons_managment_add_menu_cancel
             // 
@@ -607,6 +676,15 @@
             this.label_lessons_managment_add_menu_theme.Size = new System.Drawing.Size(95, 24);
             this.label_lessons_managment_add_menu_theme.TabIndex = 19;
             this.label_lessons_managment_add_menu_theme.Text = "{Theme}";
+            // 
+            // textBox_lessons_managment_add_menu_theme
+            // 
+            this.textBox_lessons_managment_add_menu_theme.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox_lessons_managment_add_menu_theme.Location = new System.Drawing.Point(19, 43);
+            this.textBox_lessons_managment_add_menu_theme.Multiline = true;
+            this.textBox_lessons_managment_add_menu_theme.Name = "textBox_lessons_managment_add_menu_theme";
+            this.textBox_lessons_managment_add_menu_theme.Size = new System.Drawing.Size(532, 75);
+            this.textBox_lessons_managment_add_menu_theme.TabIndex = 19;
             // 
             // button_lessons_managment_add_menu_add
             // 
@@ -666,84 +744,6 @@
             this.dataGridView_lessons.Name = "dataGridView_lessons";
             this.dataGridView_lessons.Size = new System.Drawing.Size(557, 288);
             this.dataGridView_lessons.TabIndex = 0;
-            // 
-            // textBox_lessons_managment_add_menu_theme
-            // 
-            this.textBox_lessons_managment_add_menu_theme.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_lessons_managment_add_menu_theme.Location = new System.Drawing.Point(19, 43);
-            this.textBox_lessons_managment_add_menu_theme.Multiline = true;
-            this.textBox_lessons_managment_add_menu_theme.Name = "textBox_lessons_managment_add_menu_theme";
-            this.textBox_lessons_managment_add_menu_theme.Size = new System.Drawing.Size(532, 75);
-            this.textBox_lessons_managment_add_menu_theme.TabIndex = 19;
-            // 
-            // dateTimePicker_lessons_managment_add_menu_date
-            // 
-            this.dateTimePicker_lessons_managment_add_menu_date.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker_lessons_managment_add_menu_date.Location = new System.Drawing.Point(16, 157);
-            this.dateTimePicker_lessons_managment_add_menu_date.Name = "dateTimePicker_lessons_managment_add_menu_date";
-            this.dateTimePicker_lessons_managment_add_menu_date.Size = new System.Drawing.Size(134, 32);
-            this.dateTimePicker_lessons_managment_add_menu_date.TabIndex = 21;
-            // 
-            // label_lessons_managment_add_menu_start
-            // 
-            this.label_lessons_managment_add_menu_start.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.label_lessons_managment_add_menu_start.Location = new System.Drawing.Point(190, 124);
-            this.label_lessons_managment_add_menu_start.Name = "label_lessons_managment_add_menu_start";
-            this.label_lessons_managment_add_menu_start.Size = new System.Drawing.Size(134, 32);
-            this.label_lessons_managment_add_menu_start.TabIndex = 22;
-            // 
-            // label_lessons_managment_add_menu_end
-            // 
-            this.label_lessons_managment_add_menu_end.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.label_lessons_managment_add_menu_end.Location = new System.Drawing.Point(190, 177);
-            this.label_lessons_managment_add_menu_end.Name = "label_lessons_managment_add_menu_end";
-            this.label_lessons_managment_add_menu_end.Size = new System.Drawing.Size(134, 32);
-            this.label_lessons_managment_add_menu_end.TabIndex = 23;
-            // 
-            // label_lessons_managment_add_menu_data
-            // 
-            this.label_lessons_managment_add_menu_data.AutoSize = true;
-            this.label_lessons_managment_add_menu_data.Location = new System.Drawing.Point(13, 130);
-            this.label_lessons_managment_add_menu_data.Name = "label_lessons_managment_add_menu_data";
-            this.label_lessons_managment_add_menu_data.Size = new System.Drawing.Size(72, 24);
-            this.label_lessons_managment_add_menu_data.TabIndex = 24;
-            this.label_lessons_managment_add_menu_data.Text = "{Data}";
-            // 
-            // label_lessons_add_menu_start
-            // 
-            this.label_lessons_add_menu_start.AutoSize = true;
-            this.label_lessons_add_menu_start.Location = new System.Drawing.Point(330, 130);
-            this.label_lessons_add_menu_start.Name = "label_lessons_add_menu_start";
-            this.label_lessons_add_menu_start.Size = new System.Drawing.Size(74, 24);
-            this.label_lessons_add_menu_start.TabIndex = 25;
-            this.label_lessons_add_menu_start.Text = "{Start}";
-            // 
-            // label_lessons_add_menu_end
-            // 
-            this.label_lessons_add_menu_end.AutoSize = true;
-            this.label_lessons_add_menu_end.Location = new System.Drawing.Point(330, 178);
-            this.label_lessons_add_menu_end.Name = "label_lessons_add_menu_end";
-            this.label_lessons_add_menu_end.Size = new System.Drawing.Size(66, 24);
-            this.label_lessons_add_menu_end.TabIndex = 26;
-            this.label_lessons_add_menu_end.Text = "{End}";
-            // 
-            // comboBox_lessons_add_menu_group
-            // 
-            this.comboBox_lessons_add_menu_group.FormattingEnabled = true;
-            this.comboBox_lessons_add_menu_group.Location = new System.Drawing.Point(412, 157);
-            this.comboBox_lessons_add_menu_group.Name = "comboBox_lessons_add_menu_group";
-            this.comboBox_lessons_add_menu_group.Size = new System.Drawing.Size(148, 32);
-            this.comboBox_lessons_add_menu_group.TabIndex = 27;
-            this.comboBox_lessons_add_menu_group.Click += new System.EventHandler(this.comboBox_lessons_add_menu_group_Click);
-            // 
-            // label_lessons_add_menu_group
-            // 
-            this.label_lessons_add_menu_group.AutoSize = true;
-            this.label_lessons_add_menu_group.Location = new System.Drawing.Point(410, 130);
-            this.label_lessons_add_menu_group.Name = "label_lessons_add_menu_group";
-            this.label_lessons_add_menu_group.Size = new System.Drawing.Size(89, 24);
-            this.label_lessons_add_menu_group.TabIndex = 28;
-            this.label_lessons_add_menu_group.Text = "{Group}";
             // 
             // FormTeacherMain
             // 
@@ -848,8 +848,8 @@
         private System.Windows.Forms.DataGridView dataGridView_lessons;
         private System.Windows.Forms.TextBox textBox_lessons_managment_add_menu_theme;
         private System.Windows.Forms.DateTimePicker dateTimePicker_lessons_managment_add_menu_date;
-        private System.Windows.Forms.DateTimePicker label_lessons_managment_add_menu_end;
-        private System.Windows.Forms.DateTimePicker label_lessons_managment_add_menu_start;
+        private System.Windows.Forms.DateTimePicker datetimepicker_lessons_managment_add_menu_end;
+        private System.Windows.Forms.DateTimePicker datetimepicker_lessons_managment_add_menu_start;
         private System.Windows.Forms.Label label_lessons_managment_add_menu_data;
         private System.Windows.Forms.Label label_lessons_add_menu_end;
         private System.Windows.Forms.Label label_lessons_add_menu_start;

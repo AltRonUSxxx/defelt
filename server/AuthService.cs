@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
@@ -28,6 +29,44 @@ namespace server
                 }
                 return "WRONG_PASSWORD|";
             }
+        }
+
+        private static string getLenTwo(string line)
+        {
+            if(line.Length == 1)
+            {
+                return $"0{line}";
+            }
+            return line;
+        }
+
+        public static async Task<string> register_lesson(string day, string month, string year, 
+            string startHour, string startMinute, string endHour, string endMinute, 
+            string theme, string group, int user_id)
+        {
+            try
+            {
+                DateTime startTime = DateTime.ParseExact($"{getLenTwo(day)}.{getLenTwo(month)}.{year} {getLenTwo(startHour)}:{getLenTwo(startMinute)}", "dd.MM.yyyy HH:mm", CultureInfo.InvariantCulture);
+                DateTime endTime = DateTime.ParseExact($"{getLenTwo(day)}.{getLenTwo(month)}.{year} {getLenTwo(endHour)}:{getLenTwo(endMinute)}", "dd.MM.yyyy HH:mm", CultureInfo.InvariantCulture);
+                lesson new_lesson = new lesson();
+                new_lesson.theme = theme;
+                new_lesson.user_id = user_id;
+                new_lesson.group_id = Convert.ToInt32(getGroup_id(group));
+                new_lesson.start_time = startTime;
+                new_lesson.end_time = endTime;
+                new_lesson.status_id = 4;
+                using (var db = new teacher_studentEntities())
+                {
+                    db.lessons.Add(new_lesson);
+                    db.SaveChanges();
+                }
+                return "SUCCESS";
+            }
+            catch (Exception ex)
+            {
+                return "UNEXPECTED ERROR";
+            }
+
         }
 
         private static async Task<int> getGroup_id(string student_group)

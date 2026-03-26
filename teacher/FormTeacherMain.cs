@@ -62,12 +62,12 @@ namespace teacher
             comboBox_student_add_menu_group.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox_lessons_add_menu_group.DropDownStyle = ComboBoxStyle.DropDownList;
             
-            label_lessons_managment_add_menu_start.Format = DateTimePickerFormat.Custom;
-            label_lessons_managment_add_menu_end.Format = DateTimePickerFormat.Custom;
-            label_lessons_managment_add_menu_start.CustomFormat = "HH:mm";
-            label_lessons_managment_add_menu_end.CustomFormat = "HH:mm";
-            label_lessons_managment_add_menu_start.ShowUpDown = true;
-            label_lessons_managment_add_menu_end.ShowUpDown = true;
+            datetimepicker_lessons_managment_add_menu_start.Format = DateTimePickerFormat.Custom;
+            datetimepicker_lessons_managment_add_menu_end.Format = DateTimePickerFormat.Custom;
+            datetimepicker_lessons_managment_add_menu_start.CustomFormat = "HH:mm";
+            datetimepicker_lessons_managment_add_menu_end.CustomFormat = "HH:mm";
+            datetimepicker_lessons_managment_add_menu_start.ShowUpDown = true;
+            datetimepicker_lessons_managment_add_menu_end.ShowUpDown = true;
         }
 
         private async void initDataGridView(DataGridView dataGridView)
@@ -553,13 +553,38 @@ namespace teacher
             }
         }
 
-        private void button_lessons_managment_add_menu_add_Click(object sender, EventArgs e)
+        private async void button_lessons_managment_add_menu_add_Click(object sender, EventArgs e)
         {
-            DateTime startTime = new DateTime();
-            startTime.AddYears(dateTimePicker_lessons_managment_add_menu_date.Value.Year);
-            startTime.AddMonths(dateTimePicker_lessons_managment_add_menu_date.Value.Month);
-            startTime.AddDays(dateTimePicker_lessons_managment_add_menu_date.Value.Day);
-            showMessage(startTime.ToString(), language);
+            DateTime baseTime = dateTimePicker_lessons_managment_add_menu_date.Value;
+            DateTime startTime = datetimepicker_lessons_managment_add_menu_start.Value;
+            DateTime endTime = datetimepicker_lessons_managment_add_menu_end.Value;
+            if(startTime > endTime)
+            {
+                DateTime temp = startTime;
+                startTime = endTime;
+                endTime = temp;
+            }
+            string theme = textBox_lessons_managment_add_menu_theme.Text;
+            theme = theme.Replace("|","");
+            string group = comboBox_lessons_add_menu_group.Text;
+
+            string request = $"REGISTER_LESSON|{baseTime.Day}|{baseTime.Month}|{baseTime.Year}|{startTime.Hour}|{startTime.Minute}|{endTime.Hour}|{endTime.Minute}|{theme}|{group}";
+            string answer = await Program.client.SendAsync(request);
+            switch(answer)
+            {
+                case "SUCCESS":
+                    showMessage(successAdding, language);
+                    panel_lessons_managment_add_menu.Visible = false;
+                    textBox_lessons_managment_add_menu_theme.Text = "";
+                    comboBox_lessons_add_menu_group.Text = "";
+                    datetimepicker_lessons_managment_add_menu_start.Text = DateTime.Now.ToString();
+                    datetimepicker_lessons_managment_add_menu_end.Text = DateTime.Now.ToString();
+                    dateTimePicker_lessons_managment_add_menu_date.Text = DateTime.Now.ToString();
+                    break;
+                case "UNEXPECTED_ERROR":
+                    showMessage(failedAdding, language);
+                    break;
+            }
         }
     }
 }

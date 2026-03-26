@@ -116,6 +116,12 @@ namespace server
                                 result = await AuthService.remove_group(arguments[1]);
                                 await writer.WriteLineAsync(result);
                                 break;
+                            case "REGISTER_LESSON":
+                                addLogs($"REGISTER_LESSON request [{user_id}]");
+                                result = await AuthService.register_lesson(arguments[1], arguments[2], arguments[3], arguments[4], arguments[5], arguments[6], arguments[7], arguments[8], arguments[9], user_id);
+                                addLogs($"ANSWERS: {result}");
+                                await writer.WriteLineAsync(result);
+                                break;
                         }
                     }
                 }
