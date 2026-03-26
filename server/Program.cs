@@ -90,18 +90,21 @@ namespace server
                             case "REMOVE":
                                 addLogs($"REMOVE request [{user_id}]");
                                 result = await AuthService.remove(arguments[1]);
+                                addLogs($"ANSWERS: {result}");
                                 await writer.WriteLineAsync(result);
                                 break;
 
                             case "ADD_GROUP":
                                 addLogs($"ADD_GROUP request [{user_id}]");
                                 result = await AuthService.add_group(arguments[1]);
+                                addLogs($"ANSWERS: {result}");
                                 await writer.WriteLineAsync(result);
                                 break;
 
                             case "GET_GROUPS_NAME":
                                 addLogs($"GET_GROUPS_NAME request [{user_id}]");
                                 result = await AuthService.get_groups_name();
+                                addLogs($"ANSWERS: {result}");
                                 await writer.WriteLineAsync(result);
                                 break;
 
@@ -114,11 +117,18 @@ namespace server
                             case "REMOVE_GROUP":
                                 addLogs($"REMOVE_GROUP request [{user_id}]");
                                 result = await AuthService.remove_group(arguments[1]);
+                                addLogs($"ANSWERS: {result}");
                                 await writer.WriteLineAsync(result);
                                 break;
                             case "REGISTER_LESSON":
                                 addLogs($"REGISTER_LESSON request [{user_id}]");
                                 result = await AuthService.register_lesson(arguments[1], arguments[2], arguments[3], arguments[4], arguments[5], arguments[6], arguments[7], arguments[8], arguments[9], user_id);
+                                addLogs($"ANSWERS: {result}");
+                                await writer.WriteLineAsync(result);
+                                break;
+                            case "GET_LESSONS":
+                                addLogs($"GET_LESSONS request [{user_id}]");
+                                result = await AuthService.get_lessons();
                                 addLogs($"ANSWERS: {result}");
                                 await writer.WriteLineAsync(result);
                                 break;

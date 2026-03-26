@@ -57,6 +57,7 @@ namespace teacher
             language = language_out;
             initDataGridView(dataGridView_groups);
             initDataGridView(dataGridView_students);
+            initDataGridView(dataGridView_lessons);
             initLanguage(language_out, alertMessages);
 
             comboBox_student_add_menu_group.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -164,6 +165,10 @@ namespace teacher
 
             dataGridView_groups.Columns.Add("group_name", group_student);
             dataGridView_groups.Columns.Add("population", group_students_count);
+
+            dataGridView_lessons.Columns.Add("frst", "frst");
+            dataGridView_lessons.Columns.Add("frst", "frst");
+            dataGridView_lessons.Columns.Add("frst", "frst");
         }
 
         private void hideAllPanels()
@@ -537,10 +542,23 @@ namespace teacher
 
         private void button_lessons_Click(object sender, EventArgs e)
         {
+            loadLessons();
             hideAllPanels();
             disableAllButtons();
             show_panel(panel_lessons);
             enableButton(button_lessons);
+        }
+
+        private async void loadLessons()
+        {
+            string answer = await Program.client.SendAsync($"GET_LESSONS");
+            dataGridView_lessons.Rows.Clear();
+            string[] lessons = answer.Split('/');
+            foreach (string this_lesson in lessons)
+            {
+                string[] thisStud = this_lesson.Split('|');
+                dataGridView_students.Rows.Add(thisStud);
+            }
         }
 
         private async void comboBox_lessons_add_menu_group_Click(object sender, EventArgs e)

@@ -46,24 +46,25 @@ namespace server
         {
             try
             {
-                DateTime startTime = DateTime.ParseExact($"{getLenTwo(day)}.{getLenTwo(month)}.{year} {getLenTwo(startHour)}:{getLenTwo(startMinute)}", "dd.MM.yyyy HH:mm", CultureInfo.InvariantCulture);
-                DateTime endTime = DateTime.ParseExact($"{getLenTwo(day)}.{getLenTwo(month)}.{year} {getLenTwo(endHour)}:{getLenTwo(endMinute)}", "dd.MM.yyyy HH:mm", CultureInfo.InvariantCulture);
-                lesson new_lesson = new lesson();
-                new_lesson.theme = theme;
-                new_lesson.user_id = user_id;
-                new_lesson.group_id = Convert.ToInt32(getGroup_id(group));
-                new_lesson.start_time = startTime;
-                new_lesson.end_time = endTime;
-                new_lesson.status_id = 4;
                 using (var db = new teacher_studentEntities())
                 {
+                    DateTime startTime = DateTime.ParseExact($"{getLenTwo(day)}.{getLenTwo(month)}.{year} {getLenTwo(startHour)}:{getLenTwo(startMinute)}", "dd.MM.yyyy HH:mm", CultureInfo.InvariantCulture);
+                    DateTime endTime = DateTime.ParseExact($"{getLenTwo(day)}.{getLenTwo(month)}.{year} {getLenTwo(endHour)}:{getLenTwo(endMinute)}", "dd.MM.yyyy HH:mm", CultureInfo.InvariantCulture);
+                    lesson new_lesson = new lesson();
+                    new_lesson.theme = theme;
+                    new_lesson.user_id = user_id;
+                    new_lesson.group_id = Convert.ToInt32(await getGroup_id(group));
+                    new_lesson.start_time = startTime;
+                    new_lesson.end_time = endTime;
+                    new_lesson.status_id = 4;
                     db.lessons.Add(new_lesson);
                     db.SaveChanges();
+                    return "SUCCESS";
                 }
-                return "SUCCESS";
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.ToString());
                 return "UNEXPECTED ERROR";
             }
 
@@ -296,6 +297,18 @@ namespace server
                 return string.Join("|", groups);
             }
         }
+        public static async Task<string> get_lessons()
+        {
+            using (var db = new teacher_studentEntities())
+            {
+                string[] lessons = { };
+                foreach (lesson this_lesson in db.lessons)
+                {
+                    lessons = lessons.Append($"{this_lesson.theme}/{this_lesson.group_id}/{this_lesson.start_time}").ToArray();
+                }
+                return string.Join("|", lessons);
+            }
+        }
 
         public static async Task<string> remove(string student_username)
         {
@@ -355,5 +368,7 @@ namespace server
                 db.SaveChanges();
             }
         }
+
+
     }
-}
+}   
