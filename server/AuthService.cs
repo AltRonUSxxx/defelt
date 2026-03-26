@@ -90,6 +90,11 @@ namespace server
                         newFullname.middlename = middlename;
                         newFullname.user_id = newUser.id;
                         db.fullnames.Add(newFullname);
+                        attention newAttention = new attention();
+                        newAttention.date = DateTime.Now;
+                        newAttention.isOnline = false;
+                        newAttention.user_id = newUser.id;
+                        db.attentions.Add(newAttention);
                         await db.SaveChangesAsync();
                         return "SUCCESS";
                     }
@@ -165,6 +170,43 @@ namespace server
                     answer = answer.Append(temp).ToArray();
                 }
                 return answer;
+            }
+        }
+
+        public static async Task<string> remove(string student_username)
+        {
+            using (var db = new teacher_studentEntities())
+            {
+                var student = db.users.FirstOrDefault(x => x.username == student_username);
+                if (student != null)
+                {
+                    try
+                    {
+                        attention student_attention = db.attentions.FirstOrDefault(x => x.user_id == student.id);
+                        if(student_attention != null)
+                        {
+                            db.attentions.Remove(student_attention);
+                        }
+
+                        fullname student_fullname = db.fullnames.FirstOrDefault(x => x.user_id == student.id);
+                        if(student_fullname != null)
+                        {
+                            db.fullnames.Remove(db.fullnames.FirstOrDefault(x => x.user_id == student.id));
+                        }
+                        db.users.Remove(student);
+                        db.SaveChanges();
+                        return "SUCCESS";
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.ToString());
+                        return "UNEXPECTED_ERROR";
+                    }
+                }
+                else
+                {
+                    return "NOT_FOUND";
+                }
             }
         }
 

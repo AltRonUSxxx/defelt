@@ -41,6 +41,8 @@ namespace teacher
         private string online_student;
         private string offline_student;
         private string select_row;
+        private string successRemoving;
+        private string not_found;
 
 
         public FormTeacherMain(string language_out, string[] alertMessages)
@@ -116,6 +118,8 @@ namespace teacher
                     offline_student = "Не в сети";
                     online_student = "В сети";
                     select_row = "Выберете строку";
+                    successRemoving = "Успешное удаление";
+                    not_found = "не найдено";
 
                     button_groups.Text = "Группы";
 
@@ -137,7 +141,7 @@ namespace teacher
             }
 
             dataGridView_students.Columns.Add("student_fullname", fullname_student);
-            dataGridView_students.Columns.Add("student_group", login_student);
+            dataGridView_students.Columns.Add("student_login", login_student);
             dataGridView_students.Columns.Add("student_status", status_student);
             dataGridView_students.Columns.Add("student_group", group_student);
         }
@@ -380,16 +384,30 @@ namespace teacher
             return true;
         }
 
-        private void button_students_remove_Click(object sender, EventArgs e)
+        private static void showMessage(string line, string language)
         {
-            if(dataGridView_students.SelectedRows == null)
+            FormMessageBox messageBox = new FormMessageBox(line, language);
+            messageBox.ShowDialog();
+        }
+
+        private async void button_students_remove_Click(object sender, EventArgs e)
+        {
+            int selectedIndex = dataGridView_students.SelectedCells[0].RowIndex;
+            string username = dataGridView_students.Rows[selectedIndex].Cells[1].Value.ToString();
+            string answer = await Program.client.SendAsync($"REMOVE|{username}");
+            switch(answer)
             {
-                FormMessageBox messageBox = new FormMessageBox(select_row, language);
-                messageBox.ShowDialog();
-                return;
+                case "SUCCESS":
+                    loadStudents();
+                    showMessage(successRemoving, language);
+                    break;
+                case "UNEXPECTED_ERROR":
+                    showMessage(failedAdding, language);
+                    break;
+                case "NOT_FOUND":
+                    showMessage(not_found,language);
+                    break;
             }
-            string username = dataGridView_students.SelectedRows[0].Cells["Name"].Value.ToString();
-            MessageBox.Show(username);
         }
     }
 }

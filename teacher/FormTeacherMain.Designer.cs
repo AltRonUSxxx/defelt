@@ -41,10 +41,6 @@
             this.button_groups_add = new System.Windows.Forms.Button();
             this.dataGridView_groups = new System.Windows.Forms.DataGridView();
             this.panel_students = new System.Windows.Forms.Panel();
-            this.label_student_manangment = new System.Windows.Forms.Label();
-            this.button_students_remove = new System.Windows.Forms.Button();
-            this.button_students_add = new System.Windows.Forms.Button();
-            this.dataGridView_students = new System.Windows.Forms.DataGridView();
             this.panel_students_add_menu = new System.Windows.Forms.Panel();
             this.label_student_add_menu_email = new System.Windows.Forms.Label();
             this.textBox_student_add_menu_email = new System.Windows.Forms.TextBox();
@@ -65,14 +61,18 @@
             this.textBox_student_add_menu_password_confirm = new System.Windows.Forms.TextBox();
             this.textBox_student_add_menu_password = new System.Windows.Forms.TextBox();
             this.textBox_student_add_menu_username = new System.Windows.Forms.TextBox();
+            this.label_student_manangment = new System.Windows.Forms.Label();
+            this.button_students_remove = new System.Windows.Forms.Button();
+            this.button_students_add = new System.Windows.Forms.Button();
+            this.dataGridView_students = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_uppestPanel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel_groups.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_groups)).BeginInit();
             this.panel_students.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_students)).BeginInit();
             this.panel_students_add_menu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_students)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox_uppestPanel
@@ -215,45 +215,6 @@
             this.panel_students.TabIndex = 17;
             this.panel_students.Visible = false;
             // 
-            // label_student_manangment
-            // 
-            this.label_student_manangment.AutoSize = true;
-            this.label_student_manangment.Location = new System.Drawing.Point(11, 15);
-            this.label_student_manangment.Name = "label_student_manangment";
-            this.label_student_manangment.Size = new System.Drawing.Size(231, 24);
-            this.label_student_manangment.TabIndex = 3;
-            this.label_student_manangment.Text = "{Student managment}";
-            // 
-            // button_students_remove
-            // 
-            this.button_students_remove.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_students_remove.Location = new System.Drawing.Point(481, 345);
-            this.button_students_remove.Name = "button_students_remove";
-            this.button_students_remove.Size = new System.Drawing.Size(91, 30);
-            this.button_students_remove.TabIndex = 2;
-            this.button_students_remove.Text = "{remove}";
-            this.button_students_remove.UseVisualStyleBackColor = true;
-            this.button_students_remove.Click += new System.EventHandler(this.button_students_remove_Click);
-            // 
-            // button_students_add
-            // 
-            this.button_students_add.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_students_add.Location = new System.Drawing.Point(366, 345);
-            this.button_students_add.Name = "button_students_add";
-            this.button_students_add.Size = new System.Drawing.Size(109, 30);
-            this.button_students_add.TabIndex = 1;
-            this.button_students_add.Text = "{add}";
-            this.button_students_add.UseVisualStyleBackColor = true;
-            this.button_students_add.Click += new System.EventHandler(this.button_students_add_Click);
-            // 
-            // dataGridView_students
-            // 
-            this.dataGridView_students.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_students.Location = new System.Drawing.Point(15, 51);
-            this.dataGridView_students.Name = "dataGridView_students";
-            this.dataGridView_students.Size = new System.Drawing.Size(557, 288);
-            this.dataGridView_students.TabIndex = 0;
-            // 
             // panel_students_add_menu
             // 
             this.panel_students_add_menu.Controls.Add(this.label_student_add_menu_email);
@@ -275,9 +236,9 @@
             this.panel_students_add_menu.Controls.Add(this.textBox_student_add_menu_password_confirm);
             this.panel_students_add_menu.Controls.Add(this.textBox_student_add_menu_password);
             this.panel_students_add_menu.Controls.Add(this.textBox_student_add_menu_username);
-            this.panel_students_add_menu.Location = new System.Drawing.Point(6, 51);
+            this.panel_students_add_menu.Location = new System.Drawing.Point(3, 42);
             this.panel_students_add_menu.Name = "panel_students_add_menu";
-            this.panel_students_add_menu.Size = new System.Drawing.Size(566, 363);
+            this.panel_students_add_menu.Size = new System.Drawing.Size(578, 372);
             this.panel_students_add_menu.TabIndex = 4;
             this.panel_students_add_menu.Visible = false;
             // 
@@ -302,7 +263,7 @@
             // 
             this.label_student_add_menu_error.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label_student_add_menu_error.ForeColor = System.Drawing.Color.DarkRed;
-            this.label_student_add_menu_error.Location = new System.Drawing.Point(9, 243);
+            this.label_student_add_menu_error.Location = new System.Drawing.Point(15, 248);
             this.label_student_add_menu_error.Name = "label_student_add_menu_error";
             this.label_student_add_menu_error.Size = new System.Drawing.Size(545, 33);
             this.label_student_add_menu_error.TabIndex = 16;
@@ -448,6 +409,45 @@
             this.textBox_student_add_menu_username.Size = new System.Drawing.Size(148, 26);
             this.textBox_student_add_menu_username.TabIndex = 0;
             // 
+            // label_student_manangment
+            // 
+            this.label_student_manangment.AutoSize = true;
+            this.label_student_manangment.Location = new System.Drawing.Point(11, 15);
+            this.label_student_manangment.Name = "label_student_manangment";
+            this.label_student_manangment.Size = new System.Drawing.Size(231, 24);
+            this.label_student_manangment.TabIndex = 3;
+            this.label_student_manangment.Text = "{Student managment}";
+            // 
+            // button_students_remove
+            // 
+            this.button_students_remove.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_students_remove.Location = new System.Drawing.Point(481, 345);
+            this.button_students_remove.Name = "button_students_remove";
+            this.button_students_remove.Size = new System.Drawing.Size(91, 30);
+            this.button_students_remove.TabIndex = 2;
+            this.button_students_remove.Text = "{remove}";
+            this.button_students_remove.UseVisualStyleBackColor = true;
+            this.button_students_remove.Click += new System.EventHandler(this.button_students_remove_Click);
+            // 
+            // button_students_add
+            // 
+            this.button_students_add.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_students_add.Location = new System.Drawing.Point(366, 345);
+            this.button_students_add.Name = "button_students_add";
+            this.button_students_add.Size = new System.Drawing.Size(109, 30);
+            this.button_students_add.TabIndex = 1;
+            this.button_students_add.Text = "{add}";
+            this.button_students_add.UseVisualStyleBackColor = true;
+            this.button_students_add.Click += new System.EventHandler(this.button_students_add_Click);
+            // 
+            // dataGridView_students
+            // 
+            this.dataGridView_students.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_students.Location = new System.Drawing.Point(15, 51);
+            this.dataGridView_students.Name = "dataGridView_students";
+            this.dataGridView_students.Size = new System.Drawing.Size(557, 288);
+            this.dataGridView_students.TabIndex = 0;
+            // 
             // FormTeacherMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
@@ -461,8 +461,8 @@
             this.Controls.Add(this.pictureBox_uppestPanel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.panel_students);
             this.Controls.Add(this.panel_groups);
+            this.Controls.Add(this.panel_students);
             this.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(6);
@@ -476,9 +476,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_groups)).EndInit();
             this.panel_students.ResumeLayout(false);
             this.panel_students.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_students)).EndInit();
             this.panel_students_add_menu.ResumeLayout(false);
             this.panel_students_add_menu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_students)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
