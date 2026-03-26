@@ -31,7 +31,6 @@ namespace server
         public virtual DbSet<lesson> lessons { get; set; }
         public virtual DbSet<security_roles> security_roles { get; set; }
         public virtual DbSet<status> status { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<user> users { get; set; }
     }
 }

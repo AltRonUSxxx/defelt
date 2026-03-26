@@ -71,6 +71,26 @@
             this.button_students_remove = new System.Windows.Forms.Button();
             this.button_students_add = new System.Windows.Forms.Button();
             this.dataGridView_students = new System.Windows.Forms.DataGridView();
+            this.button_lessons = new System.Windows.Forms.Button();
+            this.panel_lessons = new System.Windows.Forms.Panel();
+            this.panel_lessons_managment_add_menu = new System.Windows.Forms.Panel();
+            this.button_lessons_managment_add_menu_cancel = new System.Windows.Forms.Button();
+            this.label_lessons_managment_add_menu_theme = new System.Windows.Forms.Label();
+            this.button_lessons_managment_add_menu_add = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label_lessons_managment = new System.Windows.Forms.Label();
+            this.button_lessons_remove = new System.Windows.Forms.Button();
+            this.button_lessons_add = new System.Windows.Forms.Button();
+            this.dataGridView_lessons = new System.Windows.Forms.DataGridView();
+            this.textBox_lessons_managment_add_menu_theme = new System.Windows.Forms.TextBox();
+            this.dateTimePicker_lessons_managment_add_menu_date = new System.Windows.Forms.DateTimePicker();
+            this.label_lessons_managment_add_menu_start = new System.Windows.Forms.DateTimePicker();
+            this.label_lessons_managment_add_menu_end = new System.Windows.Forms.DateTimePicker();
+            this.label_lessons_managment_add_menu_data = new System.Windows.Forms.Label();
+            this.label_lessons_add_menu_start = new System.Windows.Forms.Label();
+            this.label_lessons_add_menu_end = new System.Windows.Forms.Label();
+            this.comboBox_lessons_add_menu_group = new System.Windows.Forms.ComboBox();
+            this.label_lessons_add_menu_group = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_uppestPanel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -80,6 +100,9 @@
             this.panel_students.SuspendLayout();
             this.panel_students_add_menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_students)).BeginInit();
+            this.panel_lessons.SuspendLayout();
+            this.panel_lessons_managment_add_menu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_lessons)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox_uppestPanel
@@ -520,12 +543,215 @@
             this.dataGridView_students.Size = new System.Drawing.Size(557, 288);
             this.dataGridView_students.TabIndex = 0;
             // 
+            // button_lessons
+            // 
+            this.button_lessons.BackColor = System.Drawing.Color.Silver;
+            this.button_lessons.ForeColor = System.Drawing.Color.Black;
+            this.button_lessons.Location = new System.Drawing.Point(6, 162);
+            this.button_lessons.Name = "button_lessons";
+            this.button_lessons.Size = new System.Drawing.Size(188, 57);
+            this.button_lessons.TabIndex = 18;
+            this.button_lessons.Text = "{Lessons}";
+            this.button_lessons.UseVisualStyleBackColor = false;
+            this.button_lessons.Click += new System.EventHandler(this.button_lessons_Click);
+            // 
+            // panel_lessons
+            // 
+            this.panel_lessons.Controls.Add(this.panel_lessons_managment_add_menu);
+            this.panel_lessons.Controls.Add(this.label_lessons_managment);
+            this.panel_lessons.Controls.Add(this.button_lessons_remove);
+            this.panel_lessons.Controls.Add(this.button_lessons_add);
+            this.panel_lessons.Controls.Add(this.dataGridView_lessons);
+            this.panel_lessons.Location = new System.Drawing.Point(216, 33);
+            this.panel_lessons.Name = "panel_lessons";
+            this.panel_lessons.Size = new System.Drawing.Size(584, 417);
+            this.panel_lessons.TabIndex = 17;
+            this.panel_lessons.Visible = false;
+            // 
+            // panel_lessons_managment_add_menu
+            // 
+            this.panel_lessons_managment_add_menu.Controls.Add(this.label_lessons_add_menu_group);
+            this.panel_lessons_managment_add_menu.Controls.Add(this.comboBox_lessons_add_menu_group);
+            this.panel_lessons_managment_add_menu.Controls.Add(this.label_lessons_add_menu_end);
+            this.panel_lessons_managment_add_menu.Controls.Add(this.label_lessons_add_menu_start);
+            this.panel_lessons_managment_add_menu.Controls.Add(this.label_lessons_managment_add_menu_data);
+            this.panel_lessons_managment_add_menu.Controls.Add(this.label_lessons_managment_add_menu_end);
+            this.panel_lessons_managment_add_menu.Controls.Add(this.label_lessons_managment_add_menu_start);
+            this.panel_lessons_managment_add_menu.Controls.Add(this.dateTimePicker_lessons_managment_add_menu_date);
+            this.panel_lessons_managment_add_menu.Controls.Add(this.button_lessons_managment_add_menu_cancel);
+            this.panel_lessons_managment_add_menu.Controls.Add(this.label_lessons_managment_add_menu_theme);
+            this.panel_lessons_managment_add_menu.Controls.Add(this.textBox_lessons_managment_add_menu_theme);
+            this.panel_lessons_managment_add_menu.Controls.Add(this.button_lessons_managment_add_menu_add);
+            this.panel_lessons_managment_add_menu.Controls.Add(this.label4);
+            this.panel_lessons_managment_add_menu.Location = new System.Drawing.Point(6, 42);
+            this.panel_lessons_managment_add_menu.Name = "panel_lessons_managment_add_menu";
+            this.panel_lessons_managment_add_menu.Size = new System.Drawing.Size(575, 372);
+            this.panel_lessons_managment_add_menu.TabIndex = 4;
+            this.panel_lessons_managment_add_menu.Visible = false;
+            // 
+            // button_lessons_managment_add_menu_cancel
+            // 
+            this.button_lessons_managment_add_menu_cancel.Location = new System.Drawing.Point(298, 284);
+            this.button_lessons_managment_add_menu_cancel.Name = "button_lessons_managment_add_menu_cancel";
+            this.button_lessons_managment_add_menu_cancel.Size = new System.Drawing.Size(125, 45);
+            this.button_lessons_managment_add_menu_cancel.TabIndex = 20;
+            this.button_lessons_managment_add_menu_cancel.Text = "{cancel}";
+            this.button_lessons_managment_add_menu_cancel.UseVisualStyleBackColor = true;
+            this.button_lessons_managment_add_menu_cancel.Click += new System.EventHandler(this.button_lessons_managment_add_menu_cancel_Click);
+            // 
+            // label_lessons_managment_add_menu_theme
+            // 
+            this.label_lessons_managment_add_menu_theme.AutoSize = true;
+            this.label_lessons_managment_add_menu_theme.Location = new System.Drawing.Point(15, 13);
+            this.label_lessons_managment_add_menu_theme.Name = "label_lessons_managment_add_menu_theme";
+            this.label_lessons_managment_add_menu_theme.Size = new System.Drawing.Size(95, 24);
+            this.label_lessons_managment_add_menu_theme.TabIndex = 19;
+            this.label_lessons_managment_add_menu_theme.Text = "{Theme}";
+            // 
+            // button_lessons_managment_add_menu_add
+            // 
+            this.button_lessons_managment_add_menu_add.Location = new System.Drawing.Point(170, 284);
+            this.button_lessons_managment_add_menu_add.Name = "button_lessons_managment_add_menu_add";
+            this.button_lessons_managment_add_menu_add.Size = new System.Drawing.Size(125, 45);
+            this.button_lessons_managment_add_menu_add.TabIndex = 19;
+            this.button_lessons_managment_add_menu_add.Text = "{add}";
+            this.button_lessons_managment_add_menu_add.UseVisualStyleBackColor = true;
+            this.button_lessons_managment_add_menu_add.Click += new System.EventHandler(this.button_lessons_managment_add_menu_add_Click);
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label4.ForeColor = System.Drawing.Color.DarkRed;
+            this.label4.Location = new System.Drawing.Point(15, 236);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(545, 33);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "{error}";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label_lessons_managment
+            // 
+            this.label_lessons_managment.AutoSize = true;
+            this.label_lessons_managment.Location = new System.Drawing.Point(11, 15);
+            this.label_lessons_managment.Name = "label_lessons_managment";
+            this.label_lessons_managment.Size = new System.Drawing.Size(239, 24);
+            this.label_lessons_managment.TabIndex = 3;
+            this.label_lessons_managment.Text = "{Lessons managment}";
+            // 
+            // button_lessons_remove
+            // 
+            this.button_lessons_remove.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_lessons_remove.Location = new System.Drawing.Point(481, 345);
+            this.button_lessons_remove.Name = "button_lessons_remove";
+            this.button_lessons_remove.Size = new System.Drawing.Size(91, 30);
+            this.button_lessons_remove.TabIndex = 2;
+            this.button_lessons_remove.Text = "{remove}";
+            this.button_lessons_remove.UseVisualStyleBackColor = true;
+            // 
+            // button_lessons_add
+            // 
+            this.button_lessons_add.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_lessons_add.Location = new System.Drawing.Point(384, 345);
+            this.button_lessons_add.Name = "button_lessons_add";
+            this.button_lessons_add.Size = new System.Drawing.Size(91, 30);
+            this.button_lessons_add.TabIndex = 1;
+            this.button_lessons_add.Text = "{add}";
+            this.button_lessons_add.UseVisualStyleBackColor = true;
+            this.button_lessons_add.Click += new System.EventHandler(this.button_lessons_add_Click);
+            // 
+            // dataGridView_lessons
+            // 
+            this.dataGridView_lessons.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_lessons.Location = new System.Drawing.Point(15, 51);
+            this.dataGridView_lessons.Name = "dataGridView_lessons";
+            this.dataGridView_lessons.Size = new System.Drawing.Size(557, 288);
+            this.dataGridView_lessons.TabIndex = 0;
+            // 
+            // textBox_lessons_managment_add_menu_theme
+            // 
+            this.textBox_lessons_managment_add_menu_theme.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox_lessons_managment_add_menu_theme.Location = new System.Drawing.Point(19, 43);
+            this.textBox_lessons_managment_add_menu_theme.Multiline = true;
+            this.textBox_lessons_managment_add_menu_theme.Name = "textBox_lessons_managment_add_menu_theme";
+            this.textBox_lessons_managment_add_menu_theme.Size = new System.Drawing.Size(532, 75);
+            this.textBox_lessons_managment_add_menu_theme.TabIndex = 19;
+            // 
+            // dateTimePicker_lessons_managment_add_menu_date
+            // 
+            this.dateTimePicker_lessons_managment_add_menu_date.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker_lessons_managment_add_menu_date.Location = new System.Drawing.Point(16, 157);
+            this.dateTimePicker_lessons_managment_add_menu_date.Name = "dateTimePicker_lessons_managment_add_menu_date";
+            this.dateTimePicker_lessons_managment_add_menu_date.Size = new System.Drawing.Size(134, 32);
+            this.dateTimePicker_lessons_managment_add_menu_date.TabIndex = 21;
+            // 
+            // label_lessons_managment_add_menu_start
+            // 
+            this.label_lessons_managment_add_menu_start.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.label_lessons_managment_add_menu_start.Location = new System.Drawing.Point(190, 124);
+            this.label_lessons_managment_add_menu_start.Name = "label_lessons_managment_add_menu_start";
+            this.label_lessons_managment_add_menu_start.Size = new System.Drawing.Size(134, 32);
+            this.label_lessons_managment_add_menu_start.TabIndex = 22;
+            // 
+            // label_lessons_managment_add_menu_end
+            // 
+            this.label_lessons_managment_add_menu_end.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.label_lessons_managment_add_menu_end.Location = new System.Drawing.Point(190, 177);
+            this.label_lessons_managment_add_menu_end.Name = "label_lessons_managment_add_menu_end";
+            this.label_lessons_managment_add_menu_end.Size = new System.Drawing.Size(134, 32);
+            this.label_lessons_managment_add_menu_end.TabIndex = 23;
+            // 
+            // label_lessons_managment_add_menu_data
+            // 
+            this.label_lessons_managment_add_menu_data.AutoSize = true;
+            this.label_lessons_managment_add_menu_data.Location = new System.Drawing.Point(13, 130);
+            this.label_lessons_managment_add_menu_data.Name = "label_lessons_managment_add_menu_data";
+            this.label_lessons_managment_add_menu_data.Size = new System.Drawing.Size(72, 24);
+            this.label_lessons_managment_add_menu_data.TabIndex = 24;
+            this.label_lessons_managment_add_menu_data.Text = "{Data}";
+            // 
+            // label_lessons_add_menu_start
+            // 
+            this.label_lessons_add_menu_start.AutoSize = true;
+            this.label_lessons_add_menu_start.Location = new System.Drawing.Point(330, 130);
+            this.label_lessons_add_menu_start.Name = "label_lessons_add_menu_start";
+            this.label_lessons_add_menu_start.Size = new System.Drawing.Size(74, 24);
+            this.label_lessons_add_menu_start.TabIndex = 25;
+            this.label_lessons_add_menu_start.Text = "{Start}";
+            // 
+            // label_lessons_add_menu_end
+            // 
+            this.label_lessons_add_menu_end.AutoSize = true;
+            this.label_lessons_add_menu_end.Location = new System.Drawing.Point(330, 178);
+            this.label_lessons_add_menu_end.Name = "label_lessons_add_menu_end";
+            this.label_lessons_add_menu_end.Size = new System.Drawing.Size(66, 24);
+            this.label_lessons_add_menu_end.TabIndex = 26;
+            this.label_lessons_add_menu_end.Text = "{End}";
+            // 
+            // comboBox_lessons_add_menu_group
+            // 
+            this.comboBox_lessons_add_menu_group.FormattingEnabled = true;
+            this.comboBox_lessons_add_menu_group.Location = new System.Drawing.Point(412, 157);
+            this.comboBox_lessons_add_menu_group.Name = "comboBox_lessons_add_menu_group";
+            this.comboBox_lessons_add_menu_group.Size = new System.Drawing.Size(148, 32);
+            this.comboBox_lessons_add_menu_group.TabIndex = 27;
+            this.comboBox_lessons_add_menu_group.Click += new System.EventHandler(this.comboBox_lessons_add_menu_group_Click);
+            // 
+            // label_lessons_add_menu_group
+            // 
+            this.label_lessons_add_menu_group.AutoSize = true;
+            this.label_lessons_add_menu_group.Location = new System.Drawing.Point(410, 130);
+            this.label_lessons_add_menu_group.Name = "label_lessons_add_menu_group";
+            this.label_lessons_add_menu_group.Size = new System.Drawing.Size(89, 24);
+            this.label_lessons_add_menu_group.TabIndex = 28;
+            this.label_lessons_add_menu_group.Text = "{Group}";
+            // 
             // FormTeacherMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button_lessons);
             this.Controls.Add(this.button_groups);
             this.Controls.Add(this.button_students);
             this.Controls.Add(this.label_close);
@@ -533,8 +759,9 @@
             this.Controls.Add(this.pictureBox_uppestPanel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.panel_groups);
+            this.Controls.Add(this.panel_lessons);
             this.Controls.Add(this.panel_students);
+            this.Controls.Add(this.panel_groups);
             this.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(6);
@@ -553,6 +780,11 @@
             this.panel_students_add_menu.ResumeLayout(false);
             this.panel_students_add_menu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_students)).EndInit();
+            this.panel_lessons.ResumeLayout(false);
+            this.panel_lessons.PerformLayout();
+            this.panel_lessons_managment_add_menu.ResumeLayout(false);
+            this.panel_lessons_managment_add_menu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_lessons)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -603,5 +835,25 @@
         private System.Windows.Forms.Button button_group_managment_add_menu_cancel;
         private System.Windows.Forms.Button button_group_managment_add_menu_add;
         private System.Windows.Forms.Label label_group_managment_add_menu_error;
+        private System.Windows.Forms.Button button_lessons;
+        private System.Windows.Forms.Panel panel_lessons;
+        private System.Windows.Forms.Panel panel_lessons_managment_add_menu;
+        private System.Windows.Forms.Button button_lessons_managment_add_menu_cancel;
+        private System.Windows.Forms.Label label_lessons_managment_add_menu_theme;
+        private System.Windows.Forms.Button button_lessons_managment_add_menu_add;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label_lessons_managment;
+        private System.Windows.Forms.Button button_lessons_remove;
+        private System.Windows.Forms.Button button_lessons_add;
+        private System.Windows.Forms.DataGridView dataGridView_lessons;
+        private System.Windows.Forms.TextBox textBox_lessons_managment_add_menu_theme;
+        private System.Windows.Forms.DateTimePicker dateTimePicker_lessons_managment_add_menu_date;
+        private System.Windows.Forms.DateTimePicker label_lessons_managment_add_menu_end;
+        private System.Windows.Forms.DateTimePicker label_lessons_managment_add_menu_start;
+        private System.Windows.Forms.Label label_lessons_managment_add_menu_data;
+        private System.Windows.Forms.Label label_lessons_add_menu_end;
+        private System.Windows.Forms.Label label_lessons_add_menu_start;
+        private System.Windows.Forms.Label label_lessons_add_menu_group;
+        private System.Windows.Forms.ComboBox comboBox_lessons_add_menu_group;
     }
 }

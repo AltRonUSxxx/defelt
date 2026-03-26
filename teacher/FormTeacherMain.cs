@@ -58,7 +58,16 @@ namespace teacher
             initDataGridView(dataGridView_groups);
             initDataGridView(dataGridView_students);
             initLanguage(language_out, alertMessages);
+
             comboBox_student_add_menu_group.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox_lessons_add_menu_group.DropDownStyle = ComboBoxStyle.DropDownList;
+            
+            label_lessons_managment_add_menu_start.Format = DateTimePickerFormat.Custom;
+            label_lessons_managment_add_menu_end.Format = DateTimePickerFormat.Custom;
+            label_lessons_managment_add_menu_start.CustomFormat = "HH:mm";
+            label_lessons_managment_add_menu_end.CustomFormat = "HH:mm";
+            label_lessons_managment_add_menu_start.ShowUpDown = true;
+            label_lessons_managment_add_menu_end.ShowUpDown = true;
         }
 
         private async void initDataGridView(DataGridView dataGridView)
@@ -165,12 +174,15 @@ namespace teacher
             panel_groups.Visible = false;
             panel_groups.Location = new System.Drawing.Point(-368, 33);
 
+            panel_lessons.Visible = false;
+            panel_lessons.Location = new System.Drawing.Point(-368, 33);
         }
 
         private void disableAllButtons()
         {
             disableButton(button_groups);
             disableButton(button_students);
+            disableButton(button_lessons);
         }
 
         Point lastPoint;
@@ -510,6 +522,43 @@ namespace teacher
             {
                 comboBox_student_add_menu_group.Items.Add(group_name);
             }
+        }
+
+        private void button_lessons_managment_add_menu_cancel_Click(object sender, EventArgs e)
+        {
+            panel_lessons_managment_add_menu.Visible = false;
+        }
+
+        private void button_lessons_add_Click(object sender, EventArgs e)
+        {
+            panel_lessons_managment_add_menu.Visible = true;
+        }
+
+        private void button_lessons_Click(object sender, EventArgs e)
+        {
+            hideAllPanels();
+            disableAllButtons();
+            show_panel(panel_lessons);
+            enableButton(button_lessons);
+        }
+
+        private async void comboBox_lessons_add_menu_group_Click(object sender, EventArgs e)
+        {
+            string answer = await Program.client.SendAsync($"GET_GROUPS_NAME");
+            comboBox_lessons_add_menu_group.Items.Clear();
+            foreach (string group_name in answer.Split('|'))
+            {
+                comboBox_lessons_add_menu_group.Items.Add(group_name);
+            }
+        }
+
+        private void button_lessons_managment_add_menu_add_Click(object sender, EventArgs e)
+        {
+            DateTime startTime = new DateTime();
+            startTime.AddYears(dateTimePicker_lessons_managment_add_menu_date.Value.Year);
+            startTime.AddMonths(dateTimePicker_lessons_managment_add_menu_date.Value.Month);
+            startTime.AddDays(dateTimePicker_lessons_managment_add_menu_date.Value.Day);
+            showMessage(startTime.ToString(), language);
         }
     }
 }

@@ -73,7 +73,7 @@ namespace server
 
                             case "REGISTER":
                                 addLogs($"REGISTER request [{user_id}]");
-                                result = await AuthService.registerAsync(arguments[1], arguments[2], arguments[3], arguments[4], arguments[5], arguments[6]);
+                                result = await AuthService.registerAsync(arguments[1], arguments[2], arguments[3], arguments[4], arguments[5], arguments[6], arguments[7]);
                                 await writer.WriteLineAsync(result);
                                 if (result.StartsWith("SUCCESS"))
                                 {

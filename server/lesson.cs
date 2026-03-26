@@ -16,10 +16,13 @@ namespace server
     {
         public int id { get; set; }
         public int user_id { get; set; }
-        public System.DateTime date { get; set; }
+        public System.DateTime start_time { get; set; }
         public string theme { get; set; }
         public int status_id { get; set; }
+        public System.DateTime end_time { get; set; }
+        public int group_id { get; set; }
     
+        public virtual group group { get; set; }
         public virtual status status { get; set; }
         public virtual user user { get; set; }
     }

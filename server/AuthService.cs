@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -33,7 +34,7 @@ namespace server
         {
             using (var db = new teacher_studentEntities())
             {
-                group checkGroup = db.groups.FirstOrDefault(x => x.name == student_group);
+                group checkGroup = db.groups.FirstOrDefault(x => x.name.ToLower() == student_group.ToLower());
                 if(checkGroup == null)
                 {
                     return 1;
@@ -168,7 +169,7 @@ namespace server
                 user[] allStudents = db.users.Where(x => x.securityLvl_id == 2).Select(x => x).ToArray();
                 foreach(user student in allStudents)
                 {
-                    string temp = $"{getFullName(student.id)}|{student.username}|{getStatus(student.id)}|{ await getGroup_name(student.id)}";
+                    string temp = $"{getFullName(student.id)}|{student.username}|{getStatus(student.id)}|{ await getGroup_name(Convert.ToInt32(student.group_id))}";
                     answer = answer.Append(temp).ToArray();
                 }
                 return answer;
@@ -183,26 +184,17 @@ namespace server
             }
         }
 
-        private static user[] getUsersInGroup(group this_group)
-        {
-            using (var db = new teacher_studentEntities())
-            {
-                user[] users = db.users.Where(x => x.group_id == this_group.id).ToArray();
-                return users;
-            }
-
-        }
-
         public static async Task<string> remove_group(string group_name)
         {
             using (var db = new teacher_studentEntities())
             {
-                var this_group = db.groups.FirstOrDefault(x => x.name == group_name);
+                var this_group = db.groups.FirstOrDefault(x => x.name.ToLower() == group_name.ToLower());
                 if(this_group != null)
                 {
                     try
                     {
-                        foreach(user student in getUsersInGroup(this_group))
+                        var students = db.users.Where(u => u.group_id == this_group.id).ToList();
+                        foreach (user student in students)
                         {
                             student.group_id = 1;
                         }
@@ -241,7 +233,7 @@ namespace server
         {
             using (var db = new teacher_studentEntities())
             {
-                var groupCheck = db.groups.FirstOrDefault(x => x.name == group_name);
+                var groupCheck = db.groups.FirstOrDefault(x => x.name.ToLower() == group_name.ToLower());
                 if(groupCheck != null)
                 {
                     return "NAME_ALREADY_TAKEN";
