@@ -26,6 +26,21 @@ namespace server
 
                 if (passwordHasher.verifyPassword(password, user.hashed_password))
                 {
+                    group check_group = db.groups.FirstOrDefault(x => x.id == user.group_id);
+                    if(check_group != null)
+                    {
+                        lesson[] users_lessons = db.lessons.Where(x => x.group_id == check_group.id).ToArray();
+                        foreach(lesson check_lesson in users_lessons)
+                        {
+                            if(get_lesson_status_name(check_lesson) == "PROCESING")
+                            {
+                                string[] users_Was = check_lesson.users_was != null ? check_lesson.users_was.Split('|') : new string[0];
+                                users_Was = users_Was.Append(user.id.ToString()).ToArray();
+                                check_lesson.users_was = string.Join("|", users_Was);
+                                await db.SaveChangesAsync();
+                            }
+                        }
+                    }
                     return $"SUCCESS|{user.id}|{db.security_roles.FirstOrDefault(x => x.id == user.securityLvl_id).id}";
                 }
                 return "WRONG_PASSWORD|";
@@ -309,6 +324,26 @@ namespace server
             }
         }
 
+        public static async Task<bool> isOnline(int user_id)
+        {
+            using (var db = new teacher_studentEntities())
+            {
+                try
+                {
+                    attention this_attention = db.attentions.FirstOrDefault(x => x.user_id == user_id);
+                    if(Convert.ToBoolean(this_attention.isOnline))
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
+
         private static string get_lesson_status_name(lesson this_lesson)
         {
             using (var db = new teacher_studentEntities())
@@ -527,6 +562,30 @@ namespace server
                     return "UNEXPECTED_ERROR";
                 }
             }
+        }
+
+        public static async Task<string> get_was_users(int lesson_id)
+        {
+            using (var db = new teacher_studentEntities())
+            {
+                lesson this_lesson = db.lessons.FirstOrDefault(x => x.id == lesson_id);
+                if(this_lesson == null)
+                {
+                    return "NOT_FOUIND";
+                }
+                string[] users_was = this_lesson.users_was != null ? this_lesson.users_was.Split('|') : null;
+                if(users_was == null)
+                {
+                    return "SUCCESS|";
+                }
+                string[] answer = new string[0];
+                foreach(string user_id in users_was)
+                {
+                    answer = answer.Append(getFullName(Convert.ToInt32(user_id))).ToArray();
+                }
+                return  $"SUCCESS|{string.Join("|", answer)}";
+            }
+
         }
 
         public static async Task<string> get_user_fio_username_groupId(string id_str)

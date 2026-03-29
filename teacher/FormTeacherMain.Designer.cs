@@ -101,6 +101,14 @@
             this.button_lessons_remove = new System.Windows.Forms.Button();
             this.button_lessons_add = new System.Windows.Forms.Button();
             this.dataGridView_lessons = new System.Windows.Forms.DataGridView();
+            this.button_veyon = new System.Windows.Forms.Button();
+            this.panel_veyon = new System.Windows.Forms.Panel();
+            this.label_veyon_managment = new System.Windows.Forms.Label();
+            this.dataGridView_veyon_students = new System.Windows.Forms.DataGridView();
+            this.panel_lesson_was_users = new System.Windows.Forms.Panel();
+            this.label_lessons_panel_was_users = new System.Windows.Forms.Label();
+            this.button_lessons_cancel = new System.Windows.Forms.Button();
+            this.dataGridView_lesson_was_users = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_uppestPanel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -116,6 +124,10 @@
             this.panel_lessons.SuspendLayout();
             this.panel_lessons_managment_add_menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_lessons)).BeginInit();
+            this.panel_veyon.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_veyon_students)).BeginInit();
+            this.panel_lesson_was_users.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_lesson_was_users)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox_uppestPanel
@@ -395,9 +407,9 @@
             this.panel_students.Controls.Add(this.label_student_manangment);
             this.panel_students.Controls.Add(this.panel_students_add_menu);
             this.panel_students.Controls.Add(this.button_students_remove);
-            this.panel_students.Controls.Add(this.button_students_add);
             this.panel_students.Controls.Add(this.dataGridView_students);
-            this.panel_students.Location = new System.Drawing.Point(216, 33);
+            this.panel_students.Controls.Add(this.button_students_add);
+            this.panel_students.Location = new System.Drawing.Point(200, 33);
             this.panel_students.Name = "panel_students";
             this.panel_students.Size = new System.Drawing.Size(584, 417);
             this.panel_students.TabIndex = 17;
@@ -436,9 +448,9 @@
             this.panel_students_add_menu.Controls.Add(this.textBox_student_add_menu_password);
             this.panel_students_add_menu.Controls.Add(this.textBox_student_add_menu_username);
             this.panel_students_add_menu.Controls.Add(this.label_students_student_id);
-            this.panel_students_add_menu.Location = new System.Drawing.Point(6, 3);
+            this.panel_students_add_menu.Location = new System.Drawing.Point(0, 0);
             this.panel_students_add_menu.Name = "panel_students_add_menu";
-            this.panel_students_add_menu.Size = new System.Drawing.Size(578, 414);
+            this.panel_students_add_menu.Size = new System.Drawing.Size(622, 414);
             this.panel_students_add_menu.TabIndex = 4;
             this.panel_students_add_menu.Visible = false;
             this.panel_students_add_menu.VisibleChanged += new System.EventHandler(this.panel_students_add_menu_VisibleChanged);
@@ -473,7 +485,7 @@
             // 
             this.label_student_add_menu_error.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label_student_add_menu_error.ForeColor = System.Drawing.Color.DarkRed;
-            this.label_student_add_menu_error.Location = new System.Drawing.Point(24, 317);
+            this.label_student_add_menu_error.Location = new System.Drawing.Point(46, 317);
             this.label_student_add_menu_error.Name = "label_student_add_menu_error";
             this.label_student_add_menu_error.Size = new System.Drawing.Size(545, 33);
             this.label_student_add_menu_error.TabIndex = 16;
@@ -654,7 +666,7 @@
             // dataGridView_students
             // 
             this.dataGridView_students.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_students.Location = new System.Drawing.Point(15, 51);
+            this.dataGridView_students.Location = new System.Drawing.Point(0, 50);
             this.dataGridView_students.Name = "dataGridView_students";
             this.dataGridView_students.Size = new System.Drawing.Size(557, 288);
             this.dataGridView_students.TabIndex = 0;
@@ -674,6 +686,7 @@
             // 
             // panel_lessons
             // 
+            this.panel_lessons.Controls.Add(this.panel_lesson_was_users);
             this.panel_lessons.Controls.Add(this.panel_lessons_managment_add_menu);
             this.panel_lessons.Controls.Add(this.label_lessons_managment);
             this.panel_lessons.Controls.Add(this.button_lessons_remove);
@@ -864,12 +877,91 @@
             this.dataGridView_lessons.TabIndex = 0;
             this.dataGridView_lessons.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_lessons_CellDoubleClick);
             // 
+            // button_veyon
+            // 
+            this.button_veyon.BackColor = System.Drawing.Color.Silver;
+            this.button_veyon.ForeColor = System.Drawing.Color.Black;
+            this.button_veyon.Location = new System.Drawing.Point(6, 225);
+            this.button_veyon.Name = "button_veyon";
+            this.button_veyon.Size = new System.Drawing.Size(188, 57);
+            this.button_veyon.TabIndex = 19;
+            this.button_veyon.Text = "{Veyon}";
+            this.button_veyon.UseVisualStyleBackColor = false;
+            this.button_veyon.Click += new System.EventHandler(this.button_veyon_Click);
+            // 
+            // panel_veyon
+            // 
+            this.panel_veyon.Controls.Add(this.label_veyon_managment);
+            this.panel_veyon.Controls.Add(this.dataGridView_veyon_students);
+            this.panel_veyon.Location = new System.Drawing.Point(216, 33);
+            this.panel_veyon.Name = "panel_veyon";
+            this.panel_veyon.Size = new System.Drawing.Size(584, 417);
+            this.panel_veyon.TabIndex = 18;
+            this.panel_veyon.Visible = false;
+            // 
+            // label_veyon_managment
+            // 
+            this.label_veyon_managment.AutoSize = true;
+            this.label_veyon_managment.Location = new System.Drawing.Point(11, 15);
+            this.label_veyon_managment.Name = "label_veyon_managment";
+            this.label_veyon_managment.Size = new System.Drawing.Size(213, 24);
+            this.label_veyon_managment.TabIndex = 3;
+            this.label_veyon_managment.Text = "{Veyon managment}";
+            // 
+            // dataGridView_veyon_students
+            // 
+            this.dataGridView_veyon_students.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_veyon_students.Location = new System.Drawing.Point(15, 51);
+            this.dataGridView_veyon_students.Name = "dataGridView_veyon_students";
+            this.dataGridView_veyon_students.Size = new System.Drawing.Size(557, 288);
+            this.dataGridView_veyon_students.TabIndex = 0;
+            this.dataGridView_veyon_students.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_veyon_students_CellDoubleClick);
+            // 
+            // panel_lesson_was_users
+            // 
+            this.panel_lesson_was_users.Controls.Add(this.label_lessons_panel_was_users);
+            this.panel_lesson_was_users.Controls.Add(this.button_lessons_cancel);
+            this.panel_lesson_was_users.Controls.Add(this.dataGridView_lesson_was_users);
+            this.panel_lesson_was_users.Location = new System.Drawing.Point(0, 0);
+            this.panel_lesson_was_users.Name = "panel_lesson_was_users";
+            this.panel_lesson_was_users.Size = new System.Drawing.Size(575, 372);
+            this.panel_lesson_was_users.TabIndex = 29;
+            this.panel_lesson_was_users.Visible = false;
+            // 
+            // label_lessons_panel_was_users
+            // 
+            this.label_lessons_panel_was_users.AutoSize = true;
+            this.label_lessons_panel_was_users.Location = new System.Drawing.Point(11, 15);
+            this.label_lessons_panel_was_users.Name = "label_lessons_panel_was_users";
+            this.label_lessons_panel_was_users.Size = new System.Drawing.Size(135, 24);
+            this.label_lessons_panel_was_users.TabIndex = 28;
+            this.label_lessons_panel_was_users.Text = "{Users_was}";
+            // 
+            // button_lessons_cancel
+            // 
+            this.button_lessons_cancel.Location = new System.Drawing.Point(429, 337);
+            this.button_lessons_cancel.Name = "button_lessons_cancel";
+            this.button_lessons_cancel.Size = new System.Drawing.Size(125, 45);
+            this.button_lessons_cancel.TabIndex = 20;
+            this.button_lessons_cancel.Text = "{cancel}";
+            this.button_lessons_cancel.UseVisualStyleBackColor = true;
+            this.button_lessons_cancel.Click += new System.EventHandler(this.button_lessons_cancel_Click);
+            // 
+            // dataGridView_lesson_was_users
+            // 
+            this.dataGridView_lesson_was_users.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_lesson_was_users.Location = new System.Drawing.Point(9, 42);
+            this.dataGridView_lesson_was_users.Name = "dataGridView_lesson_was_users";
+            this.dataGridView_lesson_was_users.Size = new System.Drawing.Size(557, 288);
+            this.dataGridView_lesson_was_users.TabIndex = 29;
+            // 
             // FormTeacherMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button_veyon);
             this.Controls.Add(this.button_lessons);
             this.Controls.Add(this.button_groups);
             this.Controls.Add(this.button_students);
@@ -878,9 +970,10 @@
             this.Controls.Add(this.pictureBox_uppestPanel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.panel_lessons);
             this.Controls.Add(this.panel_groups);
+            this.Controls.Add(this.panel_lessons);
             this.Controls.Add(this.panel_students);
+            this.Controls.Add(this.panel_veyon);
             this.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(6);
@@ -909,6 +1002,12 @@
             this.panel_lessons_managment_add_menu.ResumeLayout(false);
             this.panel_lessons_managment_add_menu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_lessons)).EndInit();
+            this.panel_veyon.ResumeLayout(false);
+            this.panel_veyon.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_veyon_students)).EndInit();
+            this.panel_lesson_was_users.ResumeLayout(false);
+            this.panel_lesson_was_users.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_lesson_was_users)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -989,5 +1088,13 @@
         private System.Windows.Forms.Label label_groups_redact_group_id;
         private System.Windows.Forms.Button button_groups_redact_group_cancel;
         private System.Windows.Forms.Button button_groups_redact_group_add;
+        private System.Windows.Forms.Button button_veyon;
+        private System.Windows.Forms.Panel panel_veyon;
+        private System.Windows.Forms.Label label_veyon_managment;
+        private System.Windows.Forms.DataGridView dataGridView_veyon_students;
+        private System.Windows.Forms.Panel panel_lesson_was_users;
+        private System.Windows.Forms.Label label_lessons_panel_was_users;
+        private System.Windows.Forms.Button button_lessons_cancel;
+        private System.Windows.Forms.DataGridView dataGridView_lesson_was_users;
     }
 }

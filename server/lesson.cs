@@ -21,6 +21,7 @@ namespace server
         public int status_id { get; set; }
         public System.DateTime end_time { get; set; }
         public int group_id { get; set; }
+        public string users_was { get; set; }
     
         public virtual group group { get; set; }
         public virtual status status { get; set; }

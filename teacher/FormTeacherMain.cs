@@ -84,6 +84,9 @@ namespace teacher
             initDataGridView(dataGridView_groups);
             initDataGridView(dataGridView_students);
             initDataGridView(dataGridView_lessons);
+            initDataGridView(dataGridView_veyon_students);
+
+            initDataGridView(dataGridView_lesson_was_users);
 
             initDataGridView(dataGridView_groups_redact_group_in_group);
             initDataGridView(dataGridView_groups_redact_group_not_in_group);
@@ -94,7 +97,7 @@ namespace teacher
 
             comboBox_student_add_menu_group.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox_lessons_add_menu_group.DropDownStyle = ComboBoxStyle.DropDownList;
-            
+
             datetimepicker_lessons_managment_add_menu_start.Format = DateTimePickerFormat.Custom;
             datetimepicker_lessons_managment_add_menu_end.Format = DateTimePickerFormat.Custom;
             datetimepicker_lessons_managment_add_menu_start.CustomFormat = "HH:mm";
@@ -129,7 +132,7 @@ namespace teacher
             dataGridView.AllowUserToDeleteRows = false;
             dataGridView.MultiSelect = false;
 
-            
+
         }
 
         private async void initLanguage(string language, string[] alertMessages)
@@ -146,6 +149,87 @@ namespace teacher
 
             switch (language)
             {
+                case "en":
+                    shouldSame = "Password should same";
+                    wrongEmail = "Uncorrect email";
+                    successAdding = "Successfully";
+                    alreadyTakenUsername = "This login alreay taken!";
+                    alreadyTakenEmail = "This email alreay taken!";
+                    unexpected_error = "Unexepted error!";
+                    fullname_student = "Full name";
+                    login_student = "Login";
+                    status_student = "Status";
+                    group_student = "Group";
+                    offline_student = "Offline";
+                    online_student = "Online";
+                    select_row = "Select row";
+                    successRemoving = "Successfully";
+                    not_found = "Not found";
+                    group_name_already_taken = "This name already taken!";
+                    group_students_count = "Students";
+                    lessons_theme = "Theme";
+                    lessons_group_id = "Group";
+                    lesson_status = "Status";
+                    lessons_start_date = "Date";
+                    lessons_start_time = "Time";
+                    status_canceled = "Canceled";
+                    status_completed = "Completed";
+                    status_procesing = "Procesing";
+                    status_watiting = "Waiting";
+                    student_redact = "Redact";
+                    student_add = "Add";
+                    old_password = "Old password";
+                    new_password = "New password";
+                    student_password = "*Password";
+                    student_password_confirm = "*Password confirm";
+                    students_student_id = "Student id:\n";
+                    by = "by"; // Не в сети С 22:22
+                    groups_group_id = "Group id:\n";
+
+                    button_veyon.Text = "Veyon";
+                    label_veyon_managment.Text = "Veyon managment";
+                    label_groups_redact_group.Text = "*Name";
+                    button_groups_redact_group_add.Text = "Add";
+                    button_groups_redact_group_cancel.Text = "Cancele";
+
+
+                    button_groups.Text = "Groups";
+                    label_groups_managment.Text = "Groups managment";
+                    button_group_managment_add_menu_add.Text = "Add";
+                    button_group_managment_add_menu_cancel.Text = "Cancel";
+                    button_groups_remove.Text = "Remove";
+                    button_groups_add.Text = "Add";
+                    label_group_managment_add_menu_name.Text = "Name";
+                    label_group_managment_add_menu_error.Text = "";
+
+                    button_lessons.Text = "Lessons";
+                    label_lessons_managment.Text = "Lessons managment";
+                    button_lessons_add.Text = "Add";
+                    button_lessons_remove.Text = "Remove";
+                    label_lessons_managment_add_menu_theme.Text = "Theme";
+                    label_lessons_managment_add_menu_data.Text = "Date";
+                    label_lessons_add_menu_start.Text = "Start";
+                    label_lessons_add_menu_end.Text = "End";
+                    label_lessons_add_menu_group.Text = "Group";
+                    label_lessons_add_menu_error.Text = "";
+                    button_lessons_managment_add_menu_add.Text = "Add";
+                    button_lessons_managment_add_menu_cancel.Text = "Cancel";
+
+                    button_students.Text = "Students";
+                    label_student_add_menu_first_name.Text = "Name";
+                    label_student_add_menu_last_name.Text = "Lastname";
+                    label_student_add_menu_middle_name.Text = "Middlename";
+                    label_student_add_menu_group.Text = "Group";
+                    label_student_add_menu_username.Text = "*Login";
+                    label_student_add_menu_password.Text = student_password;
+                    label_student_add_menu_password_confirm.Text = student_password_confirm;
+                    label_student_manangment.Text = "Students managment";
+                    label_student_add_menu_email.Text = "*Email";
+                    button_students_add.Text = "Add";
+                    button_student_managment_add_menu_add.Text = "Add";
+                    button_students_remove.Text = "Remove";
+                    button_student_managment_add_menu_cancel.Text = "Cancel";
+                    break;
                 case "ru":
                     shouldSame = "Пароли должны быть одинаковыми!";
                     wrongEmail = "Некорректная почта";
@@ -169,10 +253,10 @@ namespace teacher
                     lesson_status = "Статус";
                     lessons_start_date = "Дата";
                     lessons_start_time = "Время";
-                    status_canceled  = "Отменен";
+                    status_canceled = "Отменен";
                     status_completed = "Завершен";
                     status_procesing = "В процесе";
-                    status_watiting  = "Ожидание";
+                    status_watiting = "Ожидание";
                     student_redact = "Изменить";
                     student_add = "Добавить";
                     old_password = "Старый пароль";
@@ -183,6 +267,11 @@ namespace teacher
                     by = "с"; // Не в сети С 22:22
                     groups_group_id = "Групп Айди:\n";
 
+                    button_veyon.Text = "Вейон";
+                    label_veyon_managment.Text = "Управление Вейон";
+                    label_groups_redact_group.Text = "*Имя";
+                    button_groups_redact_group_add.Text = "Добавить";
+                    button_groups_redact_group_cancel.Text = "Отмена";
 
 
                     button_groups.Text = "Группы";
@@ -235,6 +324,28 @@ namespace teacher
             dataGridView_students.Columns[3].Width = 100;
             dataGridView_students.Columns[4].Width = 90;
 
+            dataGridView_veyon_students.Columns.Add("id", "id");
+            dataGridView_veyon_students.Columns.Add("student_fullname", fullname_student);
+            dataGridView_veyon_students.Columns.Add("student_login", login_student);
+            dataGridView_veyon_students.Columns.Add("student_status", status_student);
+            dataGridView_veyon_students.Columns.Add("student_group", group_student);
+            dataGridView_veyon_students.Columns[0].Visible = false;
+            dataGridView_veyon_students.Columns[1].Width = 257;
+            dataGridView_veyon_students.Columns[2].Width = 110;
+            dataGridView_veyon_students.Columns[3].Width = 100;
+            dataGridView_veyon_students.Columns[4].Width = 90;
+
+            dataGridView_lesson_was_users.Columns.Add("id", "id");
+            dataGridView_lesson_was_users.Columns.Add("student_fullname", fullname_student);
+            dataGridView_lesson_was_users.Columns.Add("student_login", login_student);
+            dataGridView_lesson_was_users.Columns.Add("student_status", status_student);
+            dataGridView_lesson_was_users.Columns.Add("student_group", group_student);
+            dataGridView_lesson_was_users.Columns[0].Visible = false;
+            dataGridView_lesson_was_users.Columns[1].Width = 257;
+            dataGridView_lesson_was_users.Columns[2].Width = 110;
+            dataGridView_lesson_was_users.Columns[3].Width = 100;
+            dataGridView_lesson_was_users.Columns[4].Width = 90;
+
             dataGridView_groups.Columns.Add("id", "id");
             dataGridView_groups.Columns.Add("group_name", group_student);
             dataGridView_groups.Columns.Add("group_population", group_students_count);
@@ -252,7 +363,7 @@ namespace teacher
             dataGridView_lessons.Columns[4].Width = 70;
             dataGridView_lessons.Columns[5].Width = 70;
 
-            
+
         }
 
         private void initInOutGrop(DataGridView gridView)
@@ -271,7 +382,10 @@ namespace teacher
 
         private void hideAllPanels()
         {
-            panel_students.Visible=false;
+            panel_veyon.Visible = false;
+            panel_veyon.Location = new System.Drawing.Point(-368, 33);
+
+            panel_students.Visible = false;
             panel_students.Location = new System.Drawing.Point(-368, 33);
 
             panel_groups.Visible = false;
@@ -283,6 +397,7 @@ namespace teacher
 
         private void disableAllButtons()
         {
+            disableButton(button_veyon);
             disableButton(button_groups);
             disableButton(button_students);
             disableButton(button_lessons);
@@ -417,7 +532,7 @@ namespace teacher
         {
             panel_students_add_menu.Visible = true;
             label_students_student_id.Visible = false;
-            if(!isUserRedacting)
+            if (!isUserRedacting)
             {
                 label_student_managment_add_menu_satus_time.Visible = false;
             }
@@ -448,17 +563,17 @@ namespace teacher
             string middlename = textBox_student_add_menu_middle_name.Text;
             string group = comboBox_student_add_menu_group.Text;
 
-            if(password != password_confirm)
+            if (password != password_confirm)
             {
                 label_student_add_menu_error.Text = shouldSame;
                 return;
             }
-            if(!isCorrectEmail(email))
+            if (!isCorrectEmail(email))
             {
                 label_student_add_menu_error.Text = wrongEmail;
                 return;
             }
-            else if (check_validation(password,username))
+            else if (check_validation(password, username))
             {
                 string answer;
                 if (isUserRedacting)
@@ -553,12 +668,12 @@ namespace teacher
 
         private async void button_students_remove_Click(object sender, EventArgs e)
         {
-            if(dataGridView_students.SelectedCells.Count > 0)
+            if (dataGridView_students.SelectedCells.Count > 0)
             {
                 int selectedIndex = dataGridView_students.SelectedCells[0].RowIndex;
                 string username = dataGridView_students.Rows[selectedIndex].Cells[2].Value.ToString();
                 string answer = await Program.client.SendAsync($"REMOVE|{username}");
-                switch(answer)
+                switch (answer)
                 {
                     case "SUCCESS":
                         loadStudents();
@@ -568,7 +683,7 @@ namespace teacher
                         showMessage(unexpected_error, language);
                         break;
                     case "NOT_FOUND":
-                        showMessage(not_found,language);
+                        showMessage(not_found, language);
                         break;
                 }
             }
@@ -613,14 +728,14 @@ namespace teacher
 
         private async void button_group_managment_add_menu_add_Click(object sender, EventArgs e)
         {
-            if(textBox_group_managment_add_menu_name.Text.Length < 2)
+            if (textBox_group_managment_add_menu_name.Text.Length < 2)
             {
                 label_group_managment_add_menu_error.Text = moreThan;
                 return;
             }
             string name = textBox_group_managment_add_menu_name.Text;
             string answer = await Program.client.SendAsync($"ADD_GROUP|{name}");
-            switch(answer)
+            switch (answer)
             {
                 case "NAME_ALREADY_TAKEN":
                     label_group_managment_add_menu_error.Text = group_name_already_taken;
@@ -629,7 +744,7 @@ namespace teacher
                 case "SUCCESS":
                     loadGroups();
                     textBox_group_managment_add_menu_name.Text = "";
-                    panel_group_managment_add_menu.Visible=false;
+                    panel_group_managment_add_menu.Visible = false;
                     showMessage(successAdding, language);
                     break;
             }
@@ -644,15 +759,24 @@ namespace teacher
         {
             string answer = await Program.client.SendAsync($"GET_GROUPS_NAME");
             comboBox_student_add_menu_group.Items.Clear();
-            foreach(string group_name in answer.Split('|'))
+            foreach (string group_name in answer.Split('|'))
             {
                 comboBox_student_add_menu_group.Items.Add(group_name);
             }
         }
 
+        private void stop_lessons_redact()
+        {
+            isLessonRedacting = false;
+        }
+
         private void button_lessons_managment_add_menu_cancel_Click(object sender, EventArgs e)
         {
             panel_lessons_managment_add_menu.Visible = false;
+            if(isLessonRedacting)
+            {
+                stop_lessons_redact();
+            }
         }
 
         private void button_lessons_add_Click(object sender, EventArgs e)
@@ -725,19 +849,19 @@ namespace teacher
             DateTime baseTime = dateTimePicker_lessons_managment_add_menu_date.Value;
             DateTime startTime = datetimepicker_lessons_managment_add_menu_start.Value;
             DateTime endTime = datetimepicker_lessons_managment_add_menu_end.Value;
-            if(startTime > endTime)
+            if (startTime > endTime)
             {
                 DateTime temp = startTime;
                 startTime = endTime;
                 endTime = temp;
             }
             string theme = textBox_lessons_managment_add_menu_theme.Text;
-            theme = theme.Replace("|","");
+            theme = theme.Replace("|", "");
             string group = comboBox_lessons_add_menu_group.Text;
 
             string request = $"REGISTER_LESSON|{baseTime.Day}|{baseTime.Month}|{baseTime.Year}|{startTime.Hour}|{startTime.Minute}|{endTime.Hour}|{endTime.Minute}|{theme}|{group}";
             string answer = await Program.client.SendAsync(request);
-            switch(answer)
+            switch (answer)
             {
                 case "SUCCESS":
                     showMessage(successAdding, language);
@@ -809,7 +933,7 @@ namespace teacher
                     button_student_managment_add_menu_add.Text = student_redact;
                     panel_students_add_menu.Visible = true;
                     label_students_student_id.Visible = true;
-                    label_student_managment_add_menu_satus_time.Visible=true;
+                    label_student_managment_add_menu_satus_time.Visible = true;
                     label_students_student_id.Text = students_student_id + row.Cells[0].Value.ToString();
                     isUserRedacting = true;
                     panel_students_add_menu.Visible = true;
@@ -819,7 +943,7 @@ namespace teacher
                     textBox_student_add_menu_last_name.Text = userdata[3];
                     textBox_student_add_menu_middle_name.Text = userdata[4];
                     textBox_student_add_menu_email.Text = userdata[5];
-                    label_student_managment_add_menu_satus_time.Text = $"{userdata[7].Replace("True",online_student).Replace("False",offline_student)} {by} {userdata[8]}";
+                    label_student_managment_add_menu_satus_time.Text = $"{userdata[7].Replace("True", online_student).Replace("False", offline_student)} {by} {userdata[8]}";
 
                     textBox_student_add_menu_password.Text = "";
                     textBox_student_add_menu_password_confirm.Text = "";
@@ -833,7 +957,7 @@ namespace teacher
 
         private void panel_students_add_menu_VisibleChanged(object sender, EventArgs e)
         {
-            if(panel_students_add_menu.Visible)
+            if (panel_students_add_menu.Visible)
             {
                 label_student_add_menu_error.Text = "";
             }
@@ -859,7 +983,7 @@ namespace teacher
         {
             inGroup.Rows.Clear();
             outGroup.Rows.Clear();
-            foreach(string user_id in users_id)
+            foreach (string user_id in users_id)
             {
                 string[] answer = (await Program.client.SendAsync($"GET_USER_FIO_USERNAME_GROUPID|{user_id}")).Split('|');
                 if (Convert.ToInt32(answer[2]) == group_id)
@@ -877,7 +1001,7 @@ namespace teacher
         private async void redact_group(DataGridViewRow row)
         {
             string answer = await Program.client.SendAsync($"GET_USERS_ID");
-            if(answer.StartsWith("UNEXPECTED_ERROR"))
+            if (answer.StartsWith("UNEXPECTED_ERROR"))
             {
                 showMessage(unexpected_error, language);
                 return;
@@ -903,7 +1027,7 @@ namespace teacher
 
         private void stop_group_redact()
         {
-            panel_groups_redact_group.Visible=false;
+            panel_groups_redact_group.Visible = false;
         }
 
         private void button_groups_redact_group_Click(object sender, EventArgs e)
@@ -914,18 +1038,18 @@ namespace teacher
 
         private async void button_groups_redact_group_add_Click(object sender, EventArgs e)
         {
-            if(textBox_groups_redact_group.Text.Length < 3)
+            if (textBox_groups_redact_group.Text.Length < 3)
             {
                 showMessage(moreThan, language);
                 return;
             }
-            string answer = await Program.client.SendAsync($"REVERSE_GROUP_ID|{label_groups_redact_group_id.Text.Split('\n')[1]}|1|{string.Join("/",idToReverse)}");
-            showMessage(answer, language);   
+            string answer = await Program.client.SendAsync($"REVERSE_GROUP_ID|{label_groups_redact_group_id.Text.Split('\n')[1]}|1|{string.Join("/", idToReverse)}");
+            showMessage(answer, language);
         }
 
         private void toReverse(string id)
         {
-            if(idToReverse.Contains(id))
+            if (idToReverse.Contains(id))
             {
                 idToReverse = idToReverse.Where(x => x != id).ToArray();
             }
@@ -957,19 +1081,59 @@ namespace teacher
             }
         }
 
-        private void redact_lesson(DataGridViewRow row)
+        private async void loadStudentsVeyon()
         {
-            panel_lessons_managment_add_menu.Visible = true;
-            isLessonRedacting = true;
+            string answer = await Program.client.SendAsync($"GET_STUDENTS");
+            dataGridView_veyon_students.Rows.Clear();
+            string[] students = answer.Split('/');
+            foreach (string student in students)
+            {
+                string[] thisStud = student.Split('|');
+                if (thisStud[3].Contains("OFFLINE"))
+                {
+                    continue;
+                }
+                thisStud[3] = thisStud[3].Replace("ONLINE", online_student);
+                thisStud[3] = thisStud[3].Replace("OFFLINE", offline_student);
+                dataGridView_veyon_students.Rows.Add(thisStud);
+            }
         }
 
-        private void dataGridView_lessons_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void button_veyon_Click(object sender, EventArgs e)
         {
-            if(!(dataGridView_lessons.SelectedCells.Count > 0))
+            loadStudentsVeyon();
+            hideAllPanels();
+            disableAllButtons();
+            show_panel(panel_veyon);
+            enableButton(button_veyon);
+        }
+
+        private async void dataGridView_veyon_students_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow row = dataGridView_veyon_students.Rows[e.RowIndex];
+            string answer = await Program.client.SendAsync($"GET_USER_ACTIVITY|{row.Cells[0]}");
+            showMessage(answer, language);
+        }
+
+        private async void dataGridView_lessons_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            return;
+            panel_lesson_was_users.Visible = true;
+            dataGridView_lesson_was_users.Rows.Clear();
+            DataGridViewRow row = dataGridView_lessons.Rows[e.RowIndex];
+            string answer = await Program.client.SendAsync($"GET_WAS_USERS|{row.Cells[0]}");
+            if(answer.StartsWith("SUCCESS"))
             {
-                return;
+                showMessage(answer,language);
+                string[] answers = answer.Split('/');
+                dataGridView_lesson_was_users.Rows.Add(answers[1]);
             }
-            redact_lesson(dataGridView_lessons.Rows[e.RowIndex]);
+
+        }
+
+        private void button_lessons_cancel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

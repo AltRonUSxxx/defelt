@@ -42,6 +42,7 @@
           <Property Name="status_id" Type="int" Nullable="false" />
           <Property Name="end_time" Type="datetime" Nullable="false" />
           <Property Name="group_id" Type="int" Nullable="false" />
+          <Property Name="users_was" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="security_roles">
           <Key>
@@ -235,6 +236,7 @@
           <Property Name="status_id" Type="Int32" Nullable="false" />
           <Property Name="end_time" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="group_id" Type="Int32" Nullable="false" />
+          <Property Name="users_was" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="group" Relationship="Self.FK_lessons_groups" FromRole="lessons" ToRole="groups" />
           <NavigationProperty Name="status" Relationship="Self.FK_lessons_status" FromRole="lessons" ToRole="status" />
           <NavigationProperty Name="user" Relationship="Self.FK_lessons_users" FromRole="lessons" ToRole="users" />
@@ -437,6 +439,7 @@
                 <ScalarProperty Name="status_id" ColumnName="status_id" />
                 <ScalarProperty Name="end_time" ColumnName="end_time" />
                 <ScalarProperty Name="group_id" ColumnName="group_id" />
+                <ScalarProperty Name="users_was" ColumnName="users_was" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using System.IO;
+using System.Runtime.Remoting.Messaging;
 
 namespace server
 {
@@ -20,6 +21,7 @@ namespace server
 
             addLogs("=== Server start ===");
             addLogs("Works on 127.0.0.1:2912");
+
 
             while (true)
             {
@@ -165,6 +167,12 @@ namespace server
                             case "REVERSE_GROUP_ID":
                                 addLogs($"REVERSE_GROUP_ID request [{user_id}]");
                                 result = await AuthService.reverse_group_id(Convert.ToInt32(arguments[1]), Convert.ToInt32(arguments[2]), arguments[3].Split('/'));
+                                addLogs($"ANSWERS: {result}");
+                                await writer.WriteLineAsync(result);
+                                break;
+                            case "GET_WAS_USERS":
+                                addLogs($"GET_WAS_USERS request [{user_id}]");
+                                result = await AuthService.get_was_users(Convert.ToInt32(arguments[1]));
                                 addLogs($"ANSWERS: {result}");
                                 await writer.WriteLineAsync(result);
                                 break;
